@@ -38,7 +38,7 @@ require("../connect.php");
 <script type="text/javascript">
 
 // var server = "http://localhost/bkt_tourism/kuliner_bkt";
-var server = "http://localhost/html1/kuliner_bkt/";
+var server = "http://localhost/kuliner_bkt/kuliner_bkt/";
 var map;
 var markersDua = [];
 var koordinat = 'null'

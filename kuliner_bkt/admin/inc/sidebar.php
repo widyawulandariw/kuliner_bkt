@@ -45,7 +45,7 @@
 
 
                   <li class="sub-menu">
-                    <a href="?page=listpemilik">
+                    <a href="?page=user_management">
                     <i class="fa fa-cog"></i>
                     <span>Manage User</span>
                     </a>

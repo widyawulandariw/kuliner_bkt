@@ -8,6 +8,7 @@
         <?php if (!isset($_GET['user'])){ ?>
         <form class="form-horizontal style-form" role="form" action="act/user_add.php" method="post" >
             
+              <br>
               <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label" for="user">Name</label>
               <div class="col-sm-10">
@@ -37,24 +38,52 @@
               <div class="col-sm-10">
                   <select required name="role" class="form-control">
                     <option value="A">Admin</option>
-                    <option value="P">Culinary Place's Admin</option>                       
+                    <option value="P">Owner's Admin</option>                       
                   </select>
               </div>
                 </div>
             <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label" for="id_culinary_place">Culinary Place</label>
+                  <label class="col-sm-2 col-sm-2 control-label" for="id_culinary_place"> Admin of </label>
               <div class="col-sm-10">
                   <select  name="id" id="id" class="form-control">
               <option value='0'>None</option>
-                     <?php
-                                        
+                     
+                     <?php                
                       $kuliner=pg_query("SELECT * from culinary_place");
-                      while($mes = pg_fetch_assoc($kuliner))
+                      
+                      while($kul = pg_fetch_assoc($kuliner))
                       {
-                      echo"<option value=".$mes['id'].">".$mes['name']."</option>";
+                      echo"<option value=".$kul['id'].">".$kul['name']."</option>";
                       }
                       ?>
-                                      
+
+
+                      <?php                  
+                      $souvenir=pg_query("SELECT * from souvenir");
+                      while($sou = pg_fetch_assoc($souvenir))
+                      {
+                      echo"<option value=".$sou['id'].">".$sou['name']."</option>";
+                      }
+                      ?>
+
+
+                      <?php                  
+                      $hotel=pg_query("SELECT * from hotel");
+                      while($hot = pg_fetch_assoc($hotel))
+                      {
+                      echo"<option value=".$hot['id'].">".$hot['name']."</option>";
+                      }
+                      ?>
+
+
+                      <?php                  
+                      $tempatwisata=pg_query("SELECT * from tourism");
+                      while($tw = pg_fetch_assoc($tempatwisata))
+                      {
+                      echo"<option value=".$tw['id'].">".$tw['name']."</option>";
+                      }
+                      ?>
+                 
                   </select>
               </div>
                 </div>
@@ -73,7 +102,6 @@
                 <button type="submit" class="btn btn-primary pull-right">Save <i class="fa fa-floppy-o"></i></button>  
         </form>
         <?php } ?>
-        <!-- ini comment untuk nyoba GIT -->
         </form>
       </div>
     </div>
