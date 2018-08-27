@@ -1,6 +1,6 @@
 <div class="row">
-    <?php
-    $query = pg_query("SELECT MAX(id) AS id FROM souvenir");
+  <?php
+  $query = pg_query("SELECT MAX(id) AS id FROM small_industry");
             $result = pg_fetch_array($query);
             $idmax = $result['id'];
             if ($idmax==null) {$idmax=1;}
@@ -16,7 +16,6 @@
           <input id="latlng" type="text" class="form-control" style="width:200px" value="" placeholder="Latitude, Longitude">
           <button class="btn btn-default my-btn" style="margin-top:10px" id="btnlatlng" type="button" title="Geocode"><i class="fa fa-search"></i></button>
           <button class="btn btn-default my-btn" style="margin-top:10px" id="delete-button" type="button" title="Remove shape"><i class="fa fa-trash"></i></button></center>  </h3>
-              
                       </header>
                       <div class="panel-body">
                           <div id="map" style="width:100%;height:420px; z-index:50"></div>
@@ -29,9 +28,9 @@
 
             <div class="col-lg-4 ds" id="hide3">           
             <!-- <a class="btn btn-info">Please Add The Data</a> -->
+        
 
-
-          <div class="form-group">
+        <div class="form-group">
           <!-- <label for="id"><span style="color:red">*</span> ID</label> -->
           <input class="form-control hidden" id="id" name="id" value="<?php echo $idmax ?>"></input>
         </div>
@@ -42,7 +41,7 @@
         </div>
         
         <div class="form-group">
-          <label for="name"><span style="color:red">*</span>Name of Souvenirs</label>
+          <label for="name"><span style="color:red">*</span>Name of Craft</label>
           <input type="text" class="form-control" name="name" value="" required>
         </div>
         
@@ -81,12 +80,12 @@
           <input type="text" class="form-control" name="employee" value="" required>
         </div>
         <div class="form-group">
-          <label for="jns"><span style="color:red">*</span>Type of Souvenirs</label>
+          <label for="jns"><span style="color:red">*</span>Type of Craft</label>
           <select required name="jns" id="jns" class="form-control">
           <option value="">-Choose-</option>
              <?php
                                 
-              $jns=pg_query("select * from souvenir_type");
+              $jns=pg_query("select * from industry_type");
               while($rowjns = pg_fetch_assoc($jns))
               {
               echo"<option value=".$rowjns['id'].">".$rowjns['name']."</option>";

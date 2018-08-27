@@ -21,6 +21,31 @@
                           <span>Halaman Pengguna</span>
                       </a>
                   </li>
+
+
+                  <li class="sub-menu">
+                    <a href="?page=souvenir">
+                    <i class="fa fa-list"></i>
+                    <span>Manage Souvenir</span>
+                    </a>
+                    </li>
+
+                  <li class="sub-menu">
+                    <a href="?page=produksouvenir">
+                    <i class="fa fa-list"></i>
+                    <span>Manage Product of Souvenir</span>
+                    </a>
+                    </li>
+
+
+                  <li class="sub-menu">
+                    <a href="?page=user_management">
+                    <i class="fa fa-cog"></i>
+                    <span>Manage User</span>
+                    </a>
+                    </li> 
+
+
                    <?php
 
                     if (isset($_GET['page'])) {

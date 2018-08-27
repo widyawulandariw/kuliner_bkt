@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['admin'])){
+if(!isset($_SESSION['A'])){
   echo"<script language='JavaScript'>document.location='login.php'</script>";
   exit();
 }
@@ -9,7 +9,7 @@ include("../../connect.php");?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ADMIN</title>
+    <title>Culinary ADMIN</title>
 
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNnzxae2AewMUN0Tt_fC3gN38goeLVdVE&sensor=true&libraries=drawing&callback=initialize"  async defer></script> -->
     <!-- <script src="mapedit.js" type="text/javascript"></script> -->
