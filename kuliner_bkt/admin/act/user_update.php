@@ -13,21 +13,29 @@ $alamat = $_POST['alamat'];
 $periode = $_POST['periode'];
 $username = $_POST['username'];
 $aset = $_POST['aset'];
-$arrData = explode('-', $aset);
-$tabel = $arrData[0]; 
-$id_tabel = $arrData[1]; 
 echo "$id_tabel";
 
 $sql  = "UPDATE admin set name='$nama', password='$pass', role='$role', hp='$no_hp', address='$alamat', stewardship_period='$periode', username='$username' where username='$username'";
-$sql_admin = '';
-if($tabel == 'kuliner'){
-	$sql_admin  = "UPDATE culinary_place set username='$username' where id='$id_tabel' ";
-} else{
-	$sql_admin  = "UPDATE souvenir set username='$username' where id='$id_tabel' ";
-}
+
+$updateKuliner = pg_query("UPDATE culinary_place set username=null where username='$username'"); 
+$updateSouvenir = pg_query("UPDATE souvenir set username=null where username='$username'"); 
+$updateSmallIndustry = pg_query("UPDATE small_industry set username=null where username='$username'"); 
+$updateHotel = pg_query("UPDATE hotel set username=null where username='$username'"); 
+$updateTourism = pg_query("UPDATE tourism set username=null where username='$username'");
 
 $insert = pg_query($sql);
-$insert_admin = pg_query($sql_admin);
+if($insert){
+	for($i=0;$i<count($_POST['aset']);$i++){ 
+		echo"$username";
+		$id = $_POST['aset'][$i]; 
+		echo "$id";
+		$updateKuliner = pg_query("UPDATE culinary_place set username='$username' where id = '$id'"); 
+		$updateSouvenir = pg_query("UPDATE souvenir set username='$username' where id = '$id'"); 
+		$updateSmallIndustry = pg_query("UPDATE small_industry set username='$username' where id = '$id'"); 
+		$updateHotel = pg_query("UPDATE hotel set username='$username' where id = '$id'"); 
+		$updateTourism = pg_query("UPDATE tourism set username='$username' where id = '$id'"); 
+	} 
+}
 
 if ($insert)
 	{

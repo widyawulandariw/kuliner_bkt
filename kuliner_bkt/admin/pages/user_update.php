@@ -64,35 +64,35 @@
     <label class="col-sm-2 col-sm-2 control-label" for="id">Admin of</label> 
      
     <div class="col-sm-10"> 
-    <select  multiple id="id" name="aset" class="form-control"> 
+    <select  multiple id="id" name="aset[]" class="form-control"> 
        
       <?php                         
-      $kuliner=pg_query("SELECT * from culinary_place where username is null or username = '$_GET[username]'"); 
+      $kuliner=pg_query("SELECT * from culinary_place where (username is null or username = '$_GET[username]')"); 
       while($kul = pg_fetch_assoc($kuliner)) 
       { 
         if ($data['username']==$kul['username']) 
           { 
-            echo "<option value='kuliner-$kul[id]' selected>$kul[name]</option>"; 
+            echo "<option value='$kul[id]' selected>$kul[name]</option>"; 
           } 
           else 
           { 
-            echo"<option value='kuliner-$kul[id]'>".$kul['name']."</option>"; 
+            echo"<option value='$kul[id]'>".$kul['name']."</option>"; 
           } 
         }              
       ?> 
  
  
       <?php                         
-      $souvenir=pg_query("SELECT * from souvenir"); 
+      $souvenir=pg_query("SELECT * from souvenir where (username is null or username = '$_GET[username]')"); 
       while($sou = pg_fetch_assoc($souvenir)) 
       { 
         if ($data['username']==$sou['username']) 
           { 
-            echo "<option value='souvenir-$sou[id]' selected>$sou[name]</option>"; 
+            echo "<option value='$sou[id]' selected>$sou[name]</option>"; 
           } 
           else 
           { 
-            echo"<option value='souvenir-$sou[id]'>".$sou['name']."</option>"; 
+            echo"<option value='$sou[id]'>".$sou['name']."</option>"; 
           } 
         }              
       ?>  
