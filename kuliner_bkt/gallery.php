@@ -126,6 +126,90 @@
                       
                     </div>
                   </section>
+
+                  <section class="panel">
+
+                    <header class="panel-heading">
+                      <h2 class="box-title" style="text-transform:capitalize;"><b> Info</b></h2>
+                    </header>
+
+                    <div class="panel-body">
+                      <!-- <table id="detgal" class="table">
+                        <tbody  style='vertical-align:top;'>
+
+                        <tr><td>Name :</td><td><textarea cols="30" rows="1"></textarea></td></tr>
+                        <tr><td>Comment :</td><td><textarea cols="30" rows="5"></textarea></td></tr>
+                        <tr><td><input type="submit" value="Post Comment"/></td><td></td></tr>
+                          
+                        </tbody>          
+                      </table> -->
+
+                      
+                    </div>
+                  </section>
+
+                  <section class="panel">
+
+                    <header class="panel-heading">
+                      <h2 class="box-title" style="text-transform:capitalize;"><b> Visitor's Reviews</b></h2>
+                    </header>
+
+                    <div class="panel-body">
+
+                      <table id="detgal" class="table">
+
+                      <form method="POST" action="insert_comment.php">
+                          <tbody  style='vertical-align:top;'>
+                          <input type="hidden" name="id" value="<?php echo $_GET['idgallery']; ?>">
+                          <tr><td>Name :</td><td><textarea cols="30" rows="1" name="nama"></textarea></td></tr>
+                          <tr><td>Comment :</td><td><textarea cols="30" rows="5" name="comment"></textarea></td></tr>
+                          <tr><td><input type="submit" value="Post Comment"/></td><td></td></tr>
+                            
+                          </tbody>          
+                      </table>
+                      </form>
+
+                      <?php 
+
+                      require '../connect.php';
+                      $id = $_GET['idgallery']; 
+
+                      if (strpos($id,"RM") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_kuliner = '$id'";
+                      } elseif (strpos($id,"SO") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_souvenir = '$id'";
+                      } elseif (strpos($id,"IK") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_ik = '$id'";
+                      } elseif (strpos($id,"H") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_hotel = '$id'";
+                      } elseif (strpos($id,"OW") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_ow = '$id'";
+                      }
+
+
+                      $result = pg_query($sqlreview);
+                      ?>
+
+                      <table class="table"> 
+                      <?php 
+                      while ($rows = pg_fetch_array($result))
+                      {
+                        $nama = $rows ['name'];
+                        $komen = $rows['comment'];
+                        echo "<tr><td>Name</td><td>:</td><td>$nama</td></tr><tr><td>Comment</td><td>:</td><td>$komen</td></tr>";
+                      }
+
+                      
+                       ?>
+                      </table>
+                        
+
+
+
+
+                      
+                    </div>
+                  </section>
             
               </div>
 
@@ -139,9 +223,9 @@
                             <div class="html5gallery" style="max-height:700px; overflow:auto;" data-skin="horizontal" data-width="350" data-height="250" data-resizemode="fit">  
                               
                             <?php
-                            require '../connect.php';
+                            // require '../connect.php';
 
-                            $id = $_GET["idgallery"];
+                            // $id = $_GET["idgallery"];
                             if (strpos($id,"H") !== false) {  //Hotel
 
                               $querysearch  ="SELECT a.id, b.gallery_hotel FROM hotel as a left join hotel_gallery as b on a.id=b.id where a.id='$id' ";       

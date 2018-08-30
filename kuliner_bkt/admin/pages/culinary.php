@@ -80,7 +80,7 @@ if(isset($_GET['id']))
         &nbsp&nbsp&nbsp
         </div>
         <div class="btn-group">
-        <a href="?page=culinary&id=<?php echo $id; ?>" onclick="return confirm('Are You Sure To Delete?')" class="btn btn-round btn-default" title='Delete'><i class="fa fa-trash"></i> Delete</a>
+        <a href="?page=culinary&id=<?php echo $id; ?>" onclick="return confirm('Are You Sure Want To Delete?')" class="btn btn-round btn-default" title='Delete'><i class="fa fa-trash"></i> Delete</a>
         </div>
       </td>
 
