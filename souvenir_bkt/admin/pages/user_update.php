@@ -5,15 +5,15 @@
     <div class="box-body">
              
     <div class="form-group">
-    <?php if (isset($_GET['id']))
+    <?php if (isset($_GET['username']))
     {
-					$id=$_GET['id'];
+					$username=$_GET['username'];
           $period=$_GET['stewardship_period'];
-					$sql = pg_query("SELECT stewardship_period,id, name, address, hp, role, username, password FROM admin where id='$id'");
+					$sql = pg_query("SELECT stewardship_period, name, address, hp, role, username, password FROM admin where username='$username'");
 					$data = pg_fetch_array($sql)							
 						?>
     <form class="form-horizontal style-form" role="form" action="act/user_update.php" method="post">
-    <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $data['id']?>">
+    <input type="text" class="form-control hidden" id="username" name="username" value="<?php echo $data['username']?>">
     <input type="text" class="form-control hidden" id="stewardship_period" name="stewardship_period" value="<?php echo $data['stewardship_period']?>">
         
     <br>
@@ -67,71 +67,37 @@
     <select  name="id" id="id" class="form-control">
 		<option value='0'>None</option>
       
-      <?php                        
-      $kuliner=pg_query("SELECT * from culinary_place ");
-
-      while($kul = pg_fetch_assoc($kuliner))
-      {
-        if ($data[id]==$kul[id])
-          {
-            echo "<option value=\"$kul[id]\" selected>$kul[name]</option>";
-          }
-				  else
-          {
-            echo"<option value=".$kul['id'].">".$kul['name']."</option>";
-          }
-			  }             
-      ?>
-
-
-      <?php                        
-      $souvenir=pg_query("SELECT * from souvenir");
-
-      while($sou = pg_fetch_assoc($souvenir))
-      {
-        if ($data[id]==$sou[id])
-          {
-            echo "<option value=\"$sou[id]\" selected>$sou[name]</option>";
-          }
-          else
-          {
-            echo"<option value=".$sou['id'].">".$sou['name']."</option>";
-          }
-        }             
+    <?php                         
+      $kuliner=pg_query("SELECT * from culinary_place where username is null or username = '$_GET[username]'"); 
+ 
+      while($kul = pg_fetch_assoc($kuliner)) 
+      { 
+        if ($data['username']==$kul['username']) 
+          { 
+            echo "<option value='kuliner-$kul[id]' selected>$kul[name]</option>"; 
+          } 
+          else 
+          { 
+            echo"<option value='kuliner-$kul[id]>'".$kul['name']."</option>"; 
+          } 
+        }              
       ?> 
-
-
-      <?php                        
-      $hotel=pg_query("SELECT * from hotel");
-
-      while($hot = pg_fetch_assoc($hotel))
-      {
-        if ($data[id]==$hot[id])
-          {
-            echo "<option value=\"$hot[id]\" selected>$hot[name]</option>";
-          }
-          else
-          {
-            echo"<option value=".$hot['id'].">".$hot['name']."</option>";
-          }
-        }             
-      ?>    
-
-
-      <?php                        
-      $tempatwisata=pg_query("SELECT * from tourism");
-
-      while($tw = pg_fetch_assoc($tempatwisata))
-      {
-        if ($data[id]==$tw[id])
-          {
-            echo "<option value=\"$tw[id]\" selected>$tw[name]</option>";
-          }
-          else
-          {
-            echo"<option value=".$tw['id'].">".$tw['name']."</option>";
-          }
-        }             
+ 
+ 
+      <?php                         
+      $souvenir=pg_query("SELECT * from souvenir"); 
+ 
+      while($sou = pg_fetch_assoc($souvenir)) 
+      { 
+        if ($data['username']==$sou['username']) 
+          { 
+            echo "<option value='souvenir-$sou[id]' selected>$sou[name]</option>"; 
+          } 
+          else 
+          { 
+            echo"<option value='souvenir-$sou[id]'>".$sou['name']."</option>"; 
+          } 
+        }              
       ?>   
 
 

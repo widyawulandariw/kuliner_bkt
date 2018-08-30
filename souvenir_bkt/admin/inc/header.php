@@ -1,7 +1,7 @@
 <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
-             <a class="logo"><p><b>WEB</b><b style="font-size: 17px">GIS</b> - <b>C</b>ulinary</p></a>
+             <a class="logo"><p><b>WEB</b><b style="font-size: 17px">GIS</b> - <b>S</b>ouvenir <b>ADMIN</b></b></p></a>
              <h4>
             <div class="top-menu">
               <ul class="nav pull-right top-menu" style="margin-top: 6px">
