@@ -1,7 +1,7 @@
 <?php
 require '../../connect.php';
 $id=$_GET["id"];
-echo "$id";
+
 $query="SELECT culinary_place.id,name,address,cp,open,close,capacity,employee, ST_X(ST_Centroid(culinary_place.geom)) AS lng, ST_Y(ST_CENTROID(culinary_place.geom)) As lat FROM culinary_place  where culinary_place.id='$id' ";
 
 $hasil=pg_query($query);
@@ -95,61 +95,23 @@ while($row = pg_fetch_array($hasil)){
 					</ul>
 
 				<br><tr><td>
-					<class="btn btn-round btn-warning"><i class="fa fa-plus-square"></i><b> Add Information</b></a>
+					<div class="btn btn-round btn-warning"><i class="fa fa-plus-square"></i> Add Information</a>
 				</td></tr>
+				</div>
 
 				
 					<table id="addinfo" class="table">
 					<form method="POST" action="act/addinfo.php">
                         <tbody  style='vertical-align:top;'>
-                        <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-                        <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-                        <tr><td><b>Essential Information :</td><td><textarea cols="40" rows="5" name="info"></textarea></td></tr>
+                        <input type="hidden" name="id" value="<?php echo $_GET['idgallery']; ?>">
+                        <tr><td><b>Essential Information :</td><td><textarea cols="40" rows="5" name="information"></textarea></td></tr>
                         <tr><td><input type="submit" value="Post Information"/></td><td></td></tr>
-                           <?php 
-                     
-                      $id = $_GET["id"];
-                      echo "ini $id";
-
-                      if(strpos($id,"RM") !== false){
-                        $sqlreview = "SELECT * from information_admin where id_kuliner = '$id'";
-                      }elseif (strpos($id,"SO") !== false) {
-                        $sqlreview = "SELECT * from information_admin where id_souvenir = '$id'";
-                      }elseif (strpos($id, "IK") !== false) {
-                        $sqlreview = "SELECT * from information_admin where id_ik = '$id'";
-                      }elseif (strpos($id,"H") !== false) {
-                         $sqlreview = "SELECT * from information_admin where id_hotel = '$id'";
-                      }elseif (strpos($id,"OW")!== false) {
-                         $sqlreview = "SELECT * from information_admin where id_ow = '$id'";
-                      }
-                        
-                      $result = pg_query($sqlreview);
-                    ?>
-                    <table class="table">
-                    	<thead><th>Tanggal</th><th class="centered">Informasi</th></thead>
-                    <?php  
-                      while ($rows = pg_fetch_array($result)) 
-                        {
-                          $tgl = $rows['tanggal'];
-                          $info = $rows['informasi'];
-                          echo "<tr><td>$tgl</td><td>$info</td></tr>";
-                        }
-                    
-
-                       ?> 
+                            
                           </tbody>          
                       </table>
-                      </form>
-
-
 
 
 				</div>
-
-					
-
-
-
 
 		<div class="box-footer">
 		<div class="btn-group">

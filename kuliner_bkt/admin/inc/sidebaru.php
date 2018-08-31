@@ -18,11 +18,11 @@
                   <li class="sub-menu"> 
                       <a class="active" href="../"> 
                           <i class="fa fa-dashboard"></i> 
-                          <span>Halaman Pengguna</span> 
+                          <span>User Access</span> 
                       </a> 
                   </li> 
  
-                  <li class="sub-menu"> 
+                  <!-- <li class="sub-menu"> 
                     <a href="?page=culinary"> 
                     <i class="fa fa-list"></i> 
                     <span>Edit pa y -Culinary Place</span> 
@@ -41,7 +41,7 @@
                     <i class="fa fa-list"></i> 
                     <span>Edit pa y -Culinary</span> 
                     </a> 
-                    </li> 
+                    </li>  -->
  
  
                   <li class="sub-menu"> 
