@@ -15,8 +15,6 @@ $id = $_GET['username'];
 	$delete5 = pg_query($sql5);
 	$delete = pg_query($sql);
 
-
-
 	$delete = pg_query($sql);
 	if ($delete)
 	{

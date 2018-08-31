@@ -13,7 +13,6 @@ $alamat = $_POST['alamat'];
 $periode = $_POST['periode'];
 $username = $_POST['username'];
 $aset = $_POST['aset'];
-echo "$id_tabel";
 
 $sql  = "UPDATE admin set name='$nama', password='$pass', role='$role', hp='$no_hp', address='$alamat', stewardship_period='$periode', username='$username' where username='$username'";
 
@@ -26,9 +25,9 @@ $updateTourism = pg_query("UPDATE tourism set username=null where username='$use
 $insert = pg_query($sql);
 if($insert){
 	for($i=0;$i<count($_POST['aset']);$i++){ 
-		echo"$username";
+		// echo"$username";
 		$id = $_POST['aset'][$i]; 
-		echo "$id";
+		// echo "$id";
 		$updateKuliner = pg_query("UPDATE culinary_place set username='$username' where id = '$id'"); 
 		$updateSouvenir = pg_query("UPDATE souvenir set username='$username' where id = '$id'"); 
 		$updateSmallIndustry = pg_query("UPDATE small_industry set username='$username' where id = '$id'"); 

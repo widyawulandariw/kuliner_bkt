@@ -96,6 +96,54 @@
           } 
         }              
       ?>  
+
+
+      <?php                         
+      $industrikecil=pg_query("SELECT * from small_industry where (username is null or username = '$_GET[username]')"); 
+      while($ik = pg_fetch_assoc($industrikecil)) 
+      { 
+        if ($data['username']==$ik['username']) 
+          { 
+            echo "<option value='$ik[id]' selected>$ik[name]</option>"; 
+          } 
+          else 
+          { 
+            echo"<option value='$ik[id]'>".$ik['name']."</option>"; 
+          } 
+        }              
+      ?> 
+
+
+      <?php                         
+      $hotel=pg_query("SELECT * from hotel where (username is null or username = '$_GET[username]')"); 
+      while($hot = pg_fetch_assoc($hotel)) 
+      { 
+        if ($data['username']==$hot['username']) 
+          { 
+            echo "<option value='$hot[id]' selected>$hot[name]</option>"; 
+          } 
+          else 
+          { 
+            echo"<option value='$hot[id]'>".$hot['name']."</option>"; 
+          } 
+        }              
+      ?> 
+
+
+      <?php                         
+      $objekwisata=pg_query("SELECT * from tourism where (username is null or username = '$_GET[username]')"); 
+      while($ow = pg_fetch_assoc($objekwisata)) 
+      { 
+        if ($data['username']==$ow['username']) 
+          { 
+            echo "<option value='$ow[id]' selected>$ow[name]</option>"; 
+          } 
+          else 
+          { 
+            echo"<option value='$ow[id]'>".$ow['name']."</option>"; 
+          } 
+        }              
+      ?> 
  
  
       </select> 
@@ -106,7 +154,7 @@
       <label class="col-sm-2 col-sm-2 control-label" for="username">Username</label> 
        
       <div class="col-sm-10"> 
-      <input type="text" class="form-control" name="username" value="<?php echo $data['username']?>"> 
+      <input disabled type="text" class="form-control" name="username" value="<?php echo $data['username']?>"> 
       </div> 
         </div> 
        
