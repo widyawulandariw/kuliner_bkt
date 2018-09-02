@@ -25,21 +25,21 @@
                   <!-- <li class="sub-menu"> 
                     <a href="?page=culinary"> 
                     <i class="fa fa-list"></i> 
-                    <span>Edit pa y -Culinary Place</span> 
+                    <span>Manage Culinary Place</span> 
                     </a> 
                     </li> 
  
                   <li class="sub-menu"> 
                     <a href="?page=fasculinary"> 
                     <i class="fa fa-list"></i> 
-                    <span>Edit pa y -Facility</span> 
+                    <span>Manage Facility</span> 
                     </a> 
                     </li> 
  
                   <li class="sub-menu"> 
                     <a href="?page=jenisculinary"> 
                     <i class="fa fa-list"></i> 
-                    <span>Edit pa y -Culinary</span> 
+                    <span>Manage Culinary</span> 
                     </a> 
                     </li>  -->
  
