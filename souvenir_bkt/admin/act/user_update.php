@@ -13,9 +13,6 @@ $alamat = $_POST['alamat'];
 $periode = $_POST['periode'];
 $username = $_POST['username'];
 $aset = $_POST['aset'];
-$arrData = explode('-', $aset);
-$tabel = $arrData[0]; 
-$id_tabel = $arrData[1]; 
 
 $sql  = "UPDATE admin set name='$nama', password='$pass', role='$role', hp='$no_hp', address='$alamat', stewardship_period='$periode', username='$username' where username='$username'";
 $sql_admin = '';

@@ -37,7 +37,7 @@ require("../connect.php");
 
 <script type="text/javascript">
 
-var server = "http://localhost/html1/souvenir_bkt/";
+var server = "http://localhost/kuliner_bkt/souvenir_bkt/";
 var map;
 var markersDua = [];
 var koordinat = 'null'
@@ -795,7 +795,7 @@ function viewsou()
 
         }
       } 
-      $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+rows.length);
+      // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+rows.length);
     }
   });           
 }
@@ -930,7 +930,7 @@ function detsou(id14433){
         { 
 
          console.log(rows);
-          $('#hasilcaridet').append("<tr><td colspan='2'><strong><tr><td><b> Place's Status </b></td><td>:</td><td>"+rows[0].status+"</td></tr><tr><td><b> Souvenir's Type </b></td><td>:</td><td>"+rows[0].type+"</td></tr><td colspan='2'><strong>Product</strong></td><td><strong>Price</strong></td></tr>");
+          // $('#hasilcaridet').append("<tr><td colspan='2'><strong><tr><td><b> Place's Status </b></td><td>:</td><td>"+rows[0].status+"</td></tr><tr><td><b> Souvenir's Type </b></td><td>:</td><td>"+rows[0].type+"</td></tr><td colspan='2'><strong>Product</strong></td><td><strong>Price</strong></td></tr>");
            console.log('bb');
          for (var i in rows) 
           { 
@@ -964,10 +964,10 @@ function detsou(id14433){
             map.setCenter(centerBaru);
             map.setZoom(18); 
 
-                $('#hasilcaridet').append("<tr><td colspan='2'> "+product_souvenir+"</td><td> "+price+"</td></tr>");
+                // $('#hasilcaridet').append("<tr><td colspan='2'> "+product_souvenir+"</td><td> "+price+"</td></tr>");
             infowindow = new google.maps.InfoWindow({
             position: centerBaru,
-            content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home'></i>Nama</td><td>:</td><td> "+name+"</td></tr><br><tr><td><i class='fa fa-map-marker'></i>Alamat</td><td>:</td><td> "+address+"</td></tr><br><tr><td><i class='fa fa-phone'></i>Telepon</td><td>:</td><td> "+cp+"</td></tr><br><tr><td><i class='fa fa-clock-o'></i>Owner</td><td>:</td><td> "+owner+"</td></tr></table></span><br><input type='button' class='btn btn-success' value='Object Arround' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+name+"\")'<br>&nbsp&nbsp<input type='button' class='btn btn-success' value='Gallery' onclick='gallery(\""+id+"\")'<br>&nbsp&nbsp <input type='button' class='btn btn-success' value='Route' onclick='callRoute(centerLokasi,centerBaru);rutetampil()' />",   
+            content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home'></i>Nama</td><td>:</td><td> "+name+"</td></tr><br><tr><td><i class='fa fa-map-marker'></i>Alamat</td><td>:</td><td> "+address+"</td></tr><br><tr><td><i class='fa fa-phone'></i>Telepon</td><td>:</td><td> "+cp+"</td></tr><br><tr><td><i class='fa fa-clock-o'></i>Owner</td><td>:</td><td> "+owner+"</td></tr></table></span><br><input type='button' class='btn btn-success' value='Object Arround' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+name+"\")'<br>&nbsp&nbsp<input type='button' class='btn btn-success' value='More Information' onclick='gallery(\""+id+"\")'<br>&nbsp&nbsp <input type='button' class='btn btn-success' value='Route' onclick='callRoute(centerLokasi,centerBaru);rutetampil()' />",   
             pixelOffset: new google.maps.Size(0, -33)
             });
           infoposisi.push(infowindow); 
@@ -1002,7 +1002,7 @@ function detsouxx(id14433){
       url: server+'detik.php?info='+id14433, data: "", dataType: 'json', success: function(rows)
         { 
 
-          $('#hasilcaridet').append("<tr><td colspan='2'><strong><tr><td><b> Place's Status </b></td><td>:</td><td>"+rows[0].status+"</td></tr><tr><td><b> Industry's Type</b></td><td>:</td><td>"+rows[0].type+"</td></tr><td colspan='2'><strong>Product</strong></td><td><strong>Price</strong></td></tr>");
+          // $('#hasilcaridet').append("<tr><td colspan='2'><strong><tr><td><b> Place's Status </b></td><td>:</td><td>"+rows[0].status+"</td></tr><tr><td><b> Industry's Type</b></td><td>:</td><td>"+rows[0].type+"</td></tr><td colspan='2'><strong>Product</strong></td><td><strong>Price</strong></td></tr>");
            console.log('bb');
          for (var i in rows) 
           { 
@@ -1036,10 +1036,10 @@ function detsouxx(id14433){
             map.setCenter(centerBaru);
             map.setZoom(18); 
 
-                $('#hasilcaridet').append("<tr><td colspan='2'> "+product_small_industry+"</td><td> "+price+"</td></tr>");
+                // $('#hasilcaridet').append("<tr><td colspan='2'> "+product_small_industry+"</td><td> "+price+"</td></tr>");
             infowindow = new google.maps.InfoWindow({
             position: centerBaru,
-            content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home'></i>Nama</td><td>:</td><td> "+name+"</td></tr><br><tr><td><i class='fa fa-map-marker'></i>Alamat</td><td>:</td><td> "+address+"</td></tr><br><tr><td><i class='fa fa-phone'></i>Telepon</td><td>:</td><td> "+cp+"</td></tr><br><tr><td><i class='fa fa-clock-o'></i>Owner</td><td>:</td><td> "+owner+"</td></tr></table></span><br><input type='button' class='btn btn-success' value='Object Arround' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+name+"\")'<br>&nbsp&nbsp<input type='button' class='btn btn-success' value='Gallery' onclick='gallery(\""+id+"\")'<br>&nbsp&nbsp <input type='button' class='btn btn-success' value='Route' onclick='callRoute(centerLokasi,centerBaru);rutetampil()' />",   
+            content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home'></i>Nama</td><td>:</td><td> "+name+"</td></tr><br><tr><td><i class='fa fa-map-marker'></i>Alamat</td><td>:</td><td> "+address+"</td></tr><br><tr><td><i class='fa fa-phone'></i>Telepon</td><td>:</td><td> "+cp+"</td></tr><br><tr><td><i class='fa fa-clock-o'></i>Owner</td><td>:</td><td> "+owner+"</td></tr></table></span><br><input type='button' class='btn btn-success' value='Object Arround' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+name+"\")'<br>&nbsp&nbsp<input type='button' class='btn btn-success' value='More Information' onclick='gallery(\""+id+"\")'<br>&nbsp&nbsp <input type='button' class='btn btn-success' value='Route' onclick='callRoute(centerLokasi,centerBaru);rutetampil()' />",   
             pixelOffset: new google.maps.Size(0, -33)
             });
           infoposisi.push(infowindow); 
@@ -3500,7 +3500,7 @@ hapusawal();
                           <div class="col-lg-6 ds"  id="hasildet" style="display:none;">
                           <!-- <div class="col-md-12 padding-0" style="display:none;"> -->
                           <!-- <h3 style="font-size:16px">Information</h3> -->
-                          <a class="btn btn-compose">Information</a>
+                          <!-- <a class="btn btn-compose">Information</a> -->
                               <!-- First Action -->
                               <div class="box-body" style="max-height:450px;overflow:auto;">
                                 <div class="form-group" id="hasilcaridet1" style="display:none;">

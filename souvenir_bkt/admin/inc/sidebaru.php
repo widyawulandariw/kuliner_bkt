@@ -18,12 +18,12 @@
                   <li class="sub-menu">
                       <a class="active" href="../">
                           <i class="fa fa-dashboard"></i>
-                          <span>Halaman Pengguna</span>
+                          <span>User Access</span>
                       </a>
                   </li>
 
 
-                  <li class="sub-menu">
+                  <!-- <li class="sub-menu">
                     <a href="?page=souvenir">
                     <i class="fa fa-list"></i>
                     <span>Manage Souvenir</span>
@@ -35,27 +35,13 @@
                     <i class="fa fa-list"></i>
                     <span>Manage Product of Souvenir</span>
                     </a>
-                    </li>
-
-                  <li class="sub-menu">
-                    <a href="?page=craft">
-                    <i class="fa fa-list"></i>
-                    <span>Manage Craft</span>
-                    </a>
-                    </li>
-
-                    <li class="sub-menu">
-                    <a href="?page=produkcraft">
-                    <i class="fa fa-list"></i>
-                    <span>Manage Product of Craft</span>
-                    </a>
-                    </li>
+                    </li> -->
 
 
                   <li class="sub-menu">
                     <a href="?page=user_management">
                     <i class="fa fa-cog"></i>
-                    <span>Manage User</span>
+                    <span>Change Password</span>
                     </a>
                     </li> 
 
