@@ -3,7 +3,7 @@ require '../connect.php';
 $info = $_GET["info"];
 
 
-$querysearch ="select souvenir.id,souvenir.name,souvenir.address,souvenir.cp,souvenir.id_status,souvenir.id_souvenir_type,souvenir.owner,newtable.id_souvenir,newtable.price,ST_X(ST_Centroid(souvenir.geom)) AS lng, ST_Y(ST_CENTROID(souvenir.geom)) As lat, newtable.product_souvenir from (select detail_product_souvenir.id_souvenir,detail_product_souvenir.price, string_agg(product_souvenir.product, ', ') as product_souvenir from detail_product_souvenir join product_souvenir on product_souvenir.id = detail_product_souvenir.id_product where detail_product_souvenir.id_souvenir='$info' group by detail_product_souvenir.id_souvenir,detail_product_souvenir.price) as newtable join souvenir on souvenir.id = newtable.id_souvenir";
+$querysearch ="SELECT souvenir.id,souvenir.name,souvenir.address,souvenir.cp,souvenir.id_status,souvenir.id_souvenir_type,souvenir.owner,newtable.id_souvenir,newtable.price,ST_X(ST_Centroid(souvenir.geom)) AS lng, ST_Y(ST_CENTROID(souvenir.geom)) As lat, newtable.product_souvenir from (select detail_product_souvenir.id_souvenir,detail_product_souvenir.price, string_agg(product_souvenir.product, ', ') as product_souvenir from detail_product_souvenir join product_souvenir on product_souvenir.id = detail_product_souvenir.id_product where detail_product_souvenir.id_souvenir='$info' group by detail_product_souvenir.id_souvenir,detail_product_souvenir.price) as newtable join souvenir on souvenir.id = newtable.id_souvenir";
 $hasil=pg_query($querysearch);
 while($row = pg_fetch_array($hasil))
 	{

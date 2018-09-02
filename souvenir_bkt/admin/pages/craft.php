@@ -29,7 +29,7 @@ if(isset($_GET['id']))
 
       
     <div class="btn-group" style="width:120px;">
-    <a href="?page=formsou" class="btn btn-theme">Add Souvenir's Data <i class="fa fa-plus"></i></a>
+    <a href="?page=formcraft" class="btn btn-theme">Add Craft's Data <i class="fa fa-plus"></i></a>
     </div>
     <br><br>
 
@@ -60,16 +60,52 @@ if(isset($_GET['id']))
     <?php
     include("inc/connect.php");
     $id = $_GET['id'];
-    $querysearch  ="SELECT souvenir.id, souvenir.name, souvenir.address FROM souvenir order by id ASC ";
-    $hasil=pg_query($querysearch);
+    // $querysearch  ="SELECT souvenir.id, souvenir.name, souvenir.address FROM souvenir order by id ASC ";
+    // $hasil=pg_query($querysearch);
     
     
-    // $querysearch2  ="SELECT small_industry.id, small_industry.name, small_industry.address FROM small_industry order by id ASC ";
-    // $hasil2=pg_query($querysearch2);
+    $querysearch2  ="SELECT small_industry.id, small_industry.name, small_industry.address FROM small_industry order by id ASC ";
+    $hasil2=pg_query($querysearch2);
 
 
 
-    while($baris = pg_fetch_array($hasil))
+    // while($baris = pg_fetch_array($hasil))
+    // {
+    //   $id=$baris['id'];
+    //       $name=$baris['name'];
+          
+    //       $address=$baris['address'];
+          
+          
+    //       $dataarray[]=array('id'=>$id,'name'=>$name,'address'=>$address);
+
+
+
+?>
+  <!--   <tr>
+     
+    <td style="color:black"><?php echo "$name" ?>
+    </td>
+      
+    <td style="color:black"><?php echo "$address" ?>
+    </td>
+      
+
+      <td>
+      <div class="btn-group">
+        <a href="?page=detailsouvenir&id=<?php echo $id; ?>" class="btn btn-round btn-default" title='Detail'><i class="fa fa-exclamation-circle"></i> Detail</a>
+        &nbsp&nbsp&nbsp
+        </div>
+        <div class="btn-group">
+        <a href="?page=souvenir&id=<?php echo $id; ?>" onclick="return confirm('Are You Sure To Delete?')" class="btn btn-round btn-default" title='Delete'><i class="fa fa-trash"></i> Delete</a>
+        </div>
+      </td>
+
+    </tr> -->
+<?php
+    // }
+echo json_encode ($dataarray);
+    while($baris = pg_fetch_array($hasil2))
     {
       $id=$baris['id'];
           $name=$baris['name'];
@@ -104,42 +140,6 @@ if(isset($_GET['id']))
     </tr>
 <?php
     }
-//echo json_encode ($dataarray);
-    // while($baris = pg_fetch_array($hasil2))
-    // {
-    //   $id=$baris['id'];
-    //       $name=$baris['name'];
-          
-    //       $address=$baris['address'];
-          
-          
-    //       $dataarray[]=array('id'=>$id,'name'=>$name,'address'=>$address);
-
-
-
-?>
-    <tr>
-     
-    <td style="color:black"><?php echo "$name" ?>
-    </td>
-      
-    <td style="color:black"><?php echo "$address" ?>
-    </td>
-      
-
-      <td>
-      <div class="btn-group">
-        <a href="?page=detailsouvenir&id=<?php echo $id; ?>" class="btn btn-round btn-default" title='Detail'><i class="fa fa-exclamation-circle"></i> Detail</a>
-        &nbsp&nbsp&nbsp
-        </div>
-        <div class="btn-group">
-        <a href="?page=souvenir&id=<?php echo $id; ?>" onclick="return confirm('Are You Sure To Delete?')" class="btn btn-round btn-default" title='Delete'><i class="fa fa-trash"></i> Delete</a>
-        </div>
-      </td>
-
-    </tr>
-<?php
-    // }
 ?>
 
     </tbody>
