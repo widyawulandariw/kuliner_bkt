@@ -2,7 +2,7 @@
 require '../../connect.php';
 $id=$_GET["id"];
 
-$query="SELECT souvenir.id,souvenir.name,souvenir.address,souvenir.cp,souvenir.employee,souvenir.owner, status.status, souvenir_type.name AS tipe,ST_X(ST_Centroid(souvenir.geom)) AS lng, ST_Y(ST_CENTROID(souvenir.geom)) As lat FROM souvenir join status on souvenir.id_status=status.id join souvenir_type on souvenir.id_souvenir_type=souvenir_type.id  where souvenir.id='$id' ";
+$query="SELECT small_industry.id,small_industry.name,small_industry.address,small_industry.cp,small_industry.employee,small_industry.owner, status.status, industry_type.name AS tipe,ST_X(ST_Centroid(small_industry.geom)) AS lng, ST_Y(ST_CENTROID(small_industry.geom)) As lat FROM small_industry join status on small_industry.id_status=status.id join industry_type on small_industry.id_industry_type=industry_type.id  where small_industry.id='$id' ";
 
 $hasil=pg_query($query);
 while($row = pg_fetch_array($hasil)){
@@ -27,14 +27,13 @@ while($row = pg_fetch_array($hasil)){
     <div class="row mt">
     <div class="col-lg-7 ds" style="background-color:#f2f2f2;margin-left:30px;margin-bottom:20px">
 	<div class="box-header with-border">
-	 <h2 class="box-title" style="text-transform:capitalize;"><b> <?php echo $name ?></b>
-	  </h2>
+	 <h2 class="box-title" style="text-transform:capitalize;"><b> <?php echo $name ?></b></h2>
 	</div>
 
-	<!-- First Action -->
+    <!-- First Action -->
     <div class="panel-body">
     <table>
-    	<tbody  style='vertical-align:top;'>
+		<tbody  style='vertical-align:top;'>
 		<tr><td><b>Type</b></td><td> :&nbsp; </td><td style='text-transform:capitalize;'><?php echo $tipe ?></td></tr>
 		<tr><td><b>Address</b></td><td> :&nbsp; </td><td style='text-transform:capitalize;'><?php echo $address ?></td></tr>
 		<tr><td><b>Telephone</b></td><td>:</td><td><?php echo $cp ?></td></tr>
@@ -49,7 +48,7 @@ while($row = pg_fetch_array($hasil)){
 			<thead><th>Produk Souvenir</th><th>Harga</th></thead>
 			<tbody>													
 			<?php 
-			$queryl = "SELECT * from detail_product_souvenir join product_souvenir on detail_product_souvenir.id_product=product_souvenir.id join souvenir on detail_product_souvenir.id_souvenir=souvenir.id where souvenir.id='$id' order by detail_product_souvenir.id_product";
+			$queryl = "SELECT * from detail_product_small_industry join product_small_industry on detail_product_small_industry.id_product=product_small_industry.id join small_industry on detail_product_small_industry.id_small_industry=small_industry.id where small_industry.id='$id' order by detail_product_small_industry.id_product";
 			$hasill=pg_query($queryl);
 			while($rowl = pg_fetch_array($hasill)){
 			?>
@@ -70,13 +69,14 @@ while($row = pg_fetch_array($hasil)){
 				</table>
 				</ul>
 
+
 				<br><tr><td>
 					<class="btn btn-round btn-warning"><i class="fa fa-plus-square"></i><b> Add Information</b></a>
 				</td></tr>
 
 				
 					<table id="addinfo" class="table">
-					<form method="POST" action="act/addinfo.php">
+					<form method="POST" action="act/addinfoc.php">
                         <tbody  style='vertical-align:top;'>
                         <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
                         <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
@@ -119,14 +119,13 @@ while($row = pg_fetch_array($hasil)){
 
 
 				</div>
-				
 
 				<div class="box-footer">
 					<div class="btn-group">
 					</div>
 					<!-- <br><br> -->
-					<td><div class="btn-group"><a href="?page=souvenir" class="btn btn-primary pull-left"><i class="fa fa-chevron-left"></i> Kembali</a> </div>
-					<div class="btn-group"><a href="?page=formeditspasialsou&id=<?php echo $id ?>" class="btn btn-primary pull-left"><i class="fa fa-edit"></i> Edit Data</a></div>
+					<td><div class="btn-group"><a href="?page=industry" class="btn btn-primary pull-left"><i class="fa fa-chevron-left"></i> Kembali</a> </div>
+					<div class="btn-group"><a href="?page=formeditspasialind&id=<?php echo $id ?>" class="btn btn-primary pull-left"><i class="fa fa-edit"></i> Edit Data</a></div>
 					</td>
 				</div><!-- /.box-footer-->
             </div>
@@ -144,14 +143,14 @@ while($row = pg_fetch_array($hasil)){
 			<div class="box-body">
 					<?php $id=$_GET['id'] ?>
 							<?php
-							$querysearch="SELECT gallery_souvenir FROM souvenir_gallery where id='$id'";
+							$querysearch="SELECT gallery_industry FROM industry_gallery where id='$id'";
 
 							$hasil=pg_query($querysearch);
 							 
 							 while($baris = pg_fetch_array($hasil))
 							 {
 							 	?>
-										<image src="../img/<?php echo $baris['gallery_souvenir']; ?>" style="width:30%;">
+										<image src="../img/<?php echo $baris['gallery_industry']; ?>" style="width:30%;">
 									<?php
 							 }
 							?>
@@ -161,7 +160,7 @@ while($row = pg_fetch_array($hasil)){
 				<div class="btn-group">
 				</div>
 
-					<form role="form" action="act/uploadphotosou.php" enctype="multipart/form-data" method="post">
+					<form role="form" action="act/uploadphotoind.php" enctype="multipart/form-data" method="post">
 					  <div class="box-body">
 						
 						<input type="text" class="form-control hidden" name="id" value="<?php echo $id ?>">

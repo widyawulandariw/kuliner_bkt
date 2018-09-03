@@ -129,7 +129,7 @@ echo json_encode ($dataarray);
 
       <td>
       <div class="btn-group">
-        <a href="?page=detailsouvenir&id=<?php echo $id; ?>" class="btn btn-round btn-default" title='Detail'><i class="fa fa-exclamation-circle"></i> Detail</a>
+        <a href="?page=detailcraft&id=<?php echo $id; ?>" class="btn btn-round btn-default" title='Detail'><i class="fa fa-exclamation-circle"></i> Detail</a>
         &nbsp&nbsp&nbsp
         </div>
         <div class="btn-group">

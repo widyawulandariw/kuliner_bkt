@@ -18,7 +18,7 @@
                   <li class="sub-menu">
                       <a class="active" href="../">
                           <i class="fa fa-dashboard"></i>
-                          <span>Halaman Pengguna</span>
+                          <span>User Access</span>
                       </a>
                   </li>
 
