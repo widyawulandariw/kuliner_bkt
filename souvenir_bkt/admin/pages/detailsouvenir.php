@@ -102,13 +102,14 @@ while($row = pg_fetch_array($hasil)){
                       $result = pg_query($sqlreview);
                     ?>
                     <table class="table">
-                    	<thead><th>Tanggal</th><th class="centered">Informasi</th></thead>
+                    	<thead><th>Tanggal</th><th class="centered">Informasi</th><th>Action</th></thead>
                     <?php  
                       while ($rows = pg_fetch_array($result)) 
                         {
                           $tgl = $rows['tanggal'];
                           $info = $rows['informasi'];
-                          echo "<tr><td>$tgl</td><td>$info</td></tr>";
+                          $id_info = $rows['id_informasi'];
+                          echo "<tr><td>$tgl</td><td>$info</td><td><a href='act/deleteinfo.php?id_informasi=$id_info' class='btn btn-sm btn-default' title='Delete'><i class='fa fa-trash-o'></i></a></td></tr>";
                         }
                     
 

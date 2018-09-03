@@ -43,7 +43,7 @@ else
 	echo "<script>alert ('Error');</script>";
 }
 	echo"<script>
-		eval(\"parent.location='../?page=detailsouvenir'\");
+		eval(\"parent.location='../?page=detailsouvenir&id=$id'\");
 		</script>";
 
 ?>
