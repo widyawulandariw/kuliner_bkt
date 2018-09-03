@@ -33,7 +33,7 @@
                   <li class="sub-menu">
                     <a href="?page=homeu">
                     <i class="fa fa-list"></i>
-                    <span>Own Souvenir List</span>
+                    <span>Owned Souvenir List</span>
                     </a>
                     </li>
 

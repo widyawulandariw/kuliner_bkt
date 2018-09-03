@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ('../../../connect.php');
 $id = $_POST['id'];
 $product_souvenir = $_POST['product_souvenir'];
@@ -20,7 +21,11 @@ if($countl > 0){
 }
 if (($insert||$countl==0) && $delete){
 	//echo 'ok';
-	header("location:../?page=detailsouvenir&id=$id");
+	if($_SESSION['A']===true){
+		header("location:../index.php?page=detailsouvenir&id=$id");
+	}else{
+		header("location:../indexu.php?page=detailsouvenir&id=$id");	
+	}
 }
 else{
 	echo 'error';
