@@ -133,6 +133,41 @@
                       <h2 class="box-title" style="text-transform:capitalize;"><b> Info</b></h2>
                     </header>
 
+                    <?php 
+                     require '../connect.php';
+                      $id = $_GET["idgallery"];
+                     // echo "ini $id";
+
+                      if(strpos($id,"RM") !== false){
+                        $sqlreview = "SELECT * from information_admin where id_kuliner = '$id'";
+                      }elseif (strpos($id,"SO") !== false) {
+                        $sqlreview = "SELECT * from information_admin where id_souvenir = '$id'";
+                      }elseif (strpos($id, "IK") !== false) {
+                        $sqlreview = "SELECT * from information_admin where id_ik = '$id'";
+                      }elseif (strpos($id,"H") !== false) {
+                         $sqlreview = "SELECT * from information_admin where id_hotel = '$id'";
+                      }elseif (strpos($id,"OW")!== false) {
+                         $sqlreview = "SELECT * from information_admin where id_ow = '$id'";
+                      }
+                        
+                      $result = pg_query($sqlreview);
+                    ?>
+                    <table class="table">
+                      <thead><th>Tanggal</th><th class="centered">Info</th></thead>
+                    <?php  
+                      while ($rows = pg_fetch_array($result)) 
+                        {
+                          $tgl = $rows['tanggal'];
+                          $info = $rows['informasi'];
+                          $id_info =$rows['id_informasi'];
+                          echo "<tr><td>$tgl</td><td>$info</td><td></td></tr>";
+                        }
+                    
+
+                       ?>               
+                    
+                  </table>
+
                     <div class="panel-body">
                       <!-- <table id="detgal" class="table">
                         <tbody  style='vertical-align:top;'>
