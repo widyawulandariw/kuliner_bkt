@@ -67,7 +67,7 @@ include("../../connect.php");?>
       if(file_exists($page)){ 
         include($page); 
       }elseif($p==""){ 
-        include('pages/detailsouvenir.php'); 
+        include('pages/homeu.php'); 
       }else{ 
         include('pages/404.php'); 
       } 

@@ -77,7 +77,7 @@ $id = $data_rm['id'];
       if(file_exists($page)){ 
         include($page); 
       }elseif($p==""){ 
-        include('pages/detailculinary.php'); 
+        include('pages/homeu.php'); 
       }else{ 
         include('pages/404.php'); 
       } 
