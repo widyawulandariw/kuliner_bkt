@@ -34,14 +34,14 @@
                     <i class="fa fa-list"></i> 
                     <span>Manage Facility</span> 
                     </a> 
-                    </li> 
+                    </li>  -->
  
                   <li class="sub-menu"> 
-                    <a href="?page=jenisculinary"> 
+                    <a href="?page=homeu"> 
                     <i class="fa fa-list"></i> 
-                    <span>Manage Culinary</span> 
+                    <span>Own Culinary List</span> 
                     </a> 
-                    </li>  -->
+                    </li> 
  
  
                   <li class="sub-menu"> 
@@ -57,12 +57,12 @@
                     if (isset($_GET['page'])) { 
  
       ?> 
-                     <li class="sub-menu"> 
+                     <!-- <li class="sub-menu"> 
                       <a class="active" href="./"> 
                           <i class="fa fa-hand-o-left"></i> 
                           <span>Dashboard</span> 
                       </a> 
-                  </li> 
+                  </li>  -->
                    <?php 
             } 
           
