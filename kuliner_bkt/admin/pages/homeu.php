@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 
     <div class="panel-body">
     <table class="table">
-    <thead><th><h3><b>Own Culinary List</b></h3></th><th><h3><b>Action</b></h3></th></thead>
+    <thead><th><h3><b>Owned Culinary List</b></h3></th><th><h3><b>Action</b></h3></th></thead>
     <tbody  style='vertical-align:top;'>
     
     <?php 

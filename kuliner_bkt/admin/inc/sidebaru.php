@@ -39,7 +39,7 @@
                   <li class="sub-menu"> 
                     <a href="?page=homeu"> 
                     <i class="fa fa-list"></i> 
-                    <span>Own Culinary List</span> 
+                    <span>Owned Culinary List</span> 
                     </a> 
                     </li> 
  
