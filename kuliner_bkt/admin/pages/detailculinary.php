@@ -1,7 +1,9 @@
 <?php
 require '../../connect.php';
-$id=$_GET["id"];
-echo "$id";
+if(isset($_GET['id'])){
+	$id=$_GET["id"];
+}
+// echo "$id";
 $query="SELECT culinary_place.id,name,address,cp,open,close,capacity,employee, ST_X(ST_Centroid(culinary_place.geom)) AS lng, ST_Y(ST_CENTROID(culinary_place.geom)) As lat FROM culinary_place  where culinary_place.id='$id' ";
 
 $hasil=pg_query($query);
@@ -108,8 +110,8 @@ while($row = pg_fetch_array($hasil)){
                         <tr><td><input type="submit" value="Post Information"/></td><td></td></tr>
                            <?php 
                      
-                      $id = $_GET["id"];
-                      echo "ini $id";
+                      // $id = $_GET["id"];
+                      // echo "ini $id";
 
                       if(strpos($id,"RM") !== false){
                         $sqlreview = "SELECT * from information_admin where id_kuliner = '$id'";
@@ -122,7 +124,7 @@ while($row = pg_fetch_array($hasil)){
                       }elseif (strpos($id,"OW")!== false) {
                          $sqlreview = "SELECT * from information_admin where id_ow = '$id'";
                       }
-                        
+                      // echo $sqlreview;
                       $result = pg_query($sqlreview);
                     ?>
                     <table class="table">
@@ -142,13 +144,7 @@ while($row = pg_fetch_array($hasil)){
                       </form>
 
 
-
-
-				</div>
-
-					
-
-
+				</div>		
 
 
 		<div class="box-footer">

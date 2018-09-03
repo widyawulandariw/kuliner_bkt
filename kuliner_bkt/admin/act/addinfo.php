@@ -22,15 +22,15 @@ $tanggal = date("Y-m-d");
 
 $sql = "";
 if(strpos($id,"RM") !== false){
-	$sql = "insert into information_admin(username,id_kuliner,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
+	$sql = "INSERT into information_admin(username,id_kuliner,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
 } else if(strpos($id,"SO") !== false){
-	$sql = "insert into information_admin(name,id_souvenir,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
+	$sql = "INSERT into information_admin(username,id_souvenir,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
 } else if(strpos($id,"IK") !== false){
-	$sql = "insert into information_admin(name,id_ik,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
+	$sql = "INSERT into information_admin(username,id_ik,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
 } else if(strpos($id,"H") !== false){
-	$sql = "insert into information_admin(name,id_hotel,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
+	$sql = "INSERT into information_admin(username,id_hotel,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
 } else if(strpos($id,"OW") !== false){
-	$sql = "insert into information_admin(name,id_ow,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
+	$sql = "INSERT into information_admin(username,id_ow,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
 }
 
 $query_sql = pg_query($sql);
@@ -43,7 +43,7 @@ else
 	echo "<script>alert ('Error');</script>";
 }
 	echo"<script>
-		eval(\"parent.location='../?page=detailculinary'\");
+		eval(\"parent.location='../?page=detailculinary&id=$id'\");
 		</script>";
 
 ?>
