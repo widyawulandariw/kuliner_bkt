@@ -63,6 +63,14 @@ if(isset($_SESSION['A'])){
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat" name="submit">Log In</button>
         </div>
+
+        <br><br>
+        <div class="registration">
+                    Don't have an account yet?<br/>
+                    <a class="" href="pages/register.php">
+                        Create an account
+                    </a>
+                </div>
       </div>
   <!--   </form> -->
 		       		<!-- <label>Username</label>
