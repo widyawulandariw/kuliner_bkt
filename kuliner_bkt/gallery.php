@@ -1,3 +1,6 @@
+<?php 
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -76,13 +79,13 @@
         </div>
         <h4>
         
-        <div class="top-menu">
+        <!-- <div class="top-menu">
           <ul class="nav pull-right" style="margin-top: 6px">
-            <a href="admin/" class="logo1" title="Login" ><img src="image/login.png">
+            <a href="admin/" class="logo1" title="Login" ><img src="image/login.png"> -->
         <!-- <i class="fa fa-user"></i> -->
-        <span>Login</span></a>
+        <!-- <span>Login</span></a>
               </ul>
-            </div></h4>
+            </div></h4> -->
       </header>
 
       <aside>
@@ -196,10 +199,15 @@
                       <form method="POST" action="insert_comment.php">
                           <tbody  style='vertical-align:top;'>
                           <input type="hidden" name="id" value="<?php echo $_GET['idgallery']; ?>">
-                          <tr><td>Name :</td><td><textarea cols="30" rows="1" name="nama"></textarea></td></tr>
-                          <tr><td>Comment :</td><td><textarea cols="30" rows="5" name="comment"></textarea></td></tr>
-                          <tr><td><input type="submit" value="Post Comment"/></td><td></td></tr>
-                            
+                          <?php 
+                          if ($_SESSION['C'] == true) 
+                          {
+                            echo "<tr><td>Name :</td><td><textarea cols='30' rows='1' name='nama'></textarea></td></tr>
+                          <tr><td>Comment :</td><td><textarea cols='30' rows='5' name='comment'></textarea></td></tr>
+                          <tr><td><input type='submit' value='Post Comment'/></td><td></td></tr>";
+                          }
+                          ?>
+                          
                           </tbody>          
                       </table>
                       </form>
