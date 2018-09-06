@@ -158,7 +158,7 @@ session_start();
                         $sqlreview = "SELECT * from information_admin where id_ik = '$id'";
                       }elseif (strpos($id,"H") !== false) {
                          $sqlreview = "SELECT * from information_admin where id_hotel = '$id'";
-                      }elseif (strpos($id,"OW")!== false) {
+                      }elseif (strpos($id,"tw")!== false) {
                          $sqlreview = "SELECT * from information_admin where id_ow = '$id'";
                       }
                         

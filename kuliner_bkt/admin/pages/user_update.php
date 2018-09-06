@@ -56,8 +56,8 @@
     <select required name="role" class="form-control"> 
       <option <?php if($data['role']=='A') {echo "selected";}?> value="A">Admin</option>
       <option <?php if($data['role']=='P') {echo "selected";}?> value="P">Owner's Admin</option>
-      <option <?php if($data['role']=='C') {echo "selected";}?> value="P">Visitor</option>
-      <option <?php if($data['role']==null) {echo "selected";}?> value="P">Not Confirmed Visitor</option>      
+      <option <?php if($data['role']=='C') {echo "selected";}?> value="C">Visitor</option>
+      <option <?php if($data['role']==null) {echo "selected";}?> >Not Confirmed Visitor</option>      
     </select> 
       </div> 
     </div> 
