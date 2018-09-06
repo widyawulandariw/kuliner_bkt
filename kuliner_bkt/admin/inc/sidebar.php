@@ -52,12 +52,12 @@
                     </li> 
 
 
-                    <li class="sub-menu">
+                   <!--  <li class="sub-menu">
                     <a href="?page=verification">
                     <i class="fa fa-cog"></i>
                     <span>Manage User Verification</span>
                     </a>
-                    </li>            
+                    </li>  -->           
 
 
                    <?php

@@ -2474,7 +2474,7 @@ function viewprice()
                    }
                    else
                    {
-                    echo "<a href='admin/' class='logo1' title='Login' ><img src='image/login.png'>
+                    echo "<a href='admin/act/logout.php' class='logo1' title='Login' ><img src='image/login.png'>
                    <span>Logout</span></a>";
                    }
                     ?>

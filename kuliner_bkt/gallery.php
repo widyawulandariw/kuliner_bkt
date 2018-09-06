@@ -95,7 +95,16 @@ session_start();
             <ul class="sidebar-menu" id="nav-accordion">
               
               <p class="centered"><a href="#"><img src="assets/img/kuliner.png" class="img-circle" width="150" height="120"></a></p>
-              <h5 class="centered">Hi, Visitor!!</h5>
+              <h5 class="centered">Hi,
+              <?php 
+              if ($_SESSION['C'] == true) {
+                echo $_SESSION['username']; 
+              }
+              else{
+                echo "Visitor";
+              }
+              
+              ?>&nbsp!</h5>
 
               <li class="sub-menu">
                       <a class="active" href="index.php">
