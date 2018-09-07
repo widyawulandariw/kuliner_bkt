@@ -36,9 +36,25 @@ if(isset($_POST['username'])){
 			$data=pg_fetch_assoc($query); 
 			$_SESSION['id']=$data['id']; 
 			?><script language="JavaScript">document.location='../indexu.php'</script><?php 
-		} 
+		}
+		if($dt['role']=='C'){ 
+			$_SESSION['C'] = true; 
+			$_SESSION['username']=$dt['username']; 
+			$_SESSION['id']=$dt['id']; 
+			$_SESSION['name']=$dt['name']; 
+			$query=pg_query("select * from souvenir where id='$dt[id]'"); 
+			$data=pg_fetch_assoc($query); 
+			$_SESSION['id']=$data['id']; 
+			?><script language="JavaScript">document.location='../../index.php'</script><?php 
+		}
+		if ($dt['role'] == null) {
+			echo "<script> 
+			alert ('Check your account e-mail to verify !');
+			eval(\"parent.location='../login.php '\");	 
+			</script>";
+		}
+
 	 
- 
 		$result = pg_query("update admin set last_login = now() where username='$username'");	 
 	}else{ 
 		echo "<script> 

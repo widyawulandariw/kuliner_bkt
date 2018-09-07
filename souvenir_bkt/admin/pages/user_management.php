@@ -18,7 +18,7 @@
             <tr> 
             <th style="width:200px;color:black">Username</th> 
             <th style="width:200px;color:black">Name</th> 
-            <th style="width:200px;color:black">Periode</th> 
+            <!-- <th style="width:200px;color:black">Periode</th>  -->
             <th style="width:200px;color:black">Action</th> 
             </tr> 
             </thead> 
@@ -35,7 +35,7 @@
             <tr> 
             <td><?php echo "$username"; ?></td> 
             <td><?php echo "$nama"; ?></td> 
-            <td><?php echo "$periode"; ?></td> 
+            <!-- <td><?php echo "$periode"; ?></td>  -->
             <td> 
  
             <div class="btn-group"> 
