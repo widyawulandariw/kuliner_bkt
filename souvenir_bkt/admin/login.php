@@ -60,7 +60,7 @@ if(isset($_SESSION['A'])){
         <div class="col-xs-8">
           
         </div>
-        <!-- <div class="col-xs-4"> -->
+        <!-- <div class="col-xs-4"> --> 
           <button type="submit" class="btn btn-primary btn-block btn-flat" name="submit">Log In</button>
         </div>
 

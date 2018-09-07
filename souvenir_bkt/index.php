@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("../connect.php");
 ?>
 <!DOCTYPE html>
@@ -3116,9 +3117,18 @@ hapusawal();
             <h4>
             <div class="top-menu">
               <ul class="nav pull-right" style="margin-top: 6px">
-                   <a href="admin/" class="logo1" title="Login" ><img src="image/login.png">
-                   <!-- <i class="fa fa-user"></i> -->
-                   <span>Login</span></a>
+                   <?php 
+                   if ($_SESSION['C'] == false) 
+                   {
+                    echo "<a href='admin/' class='logo1' title='Login' ><img src='image/login.png'>
+                   <span>Login</span></a>";
+                   }
+                   else
+                   {
+                    echo "<a href='admin/act/logout.php' class='logo1' title='Login' ><img src='image/login.png'>
+                   <span>Logout</span></a>";
+                   }
+                    ?>
               </ul>
             </div></h4>
 

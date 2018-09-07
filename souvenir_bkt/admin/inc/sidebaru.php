@@ -13,7 +13,7 @@
 
 
 <p class="centered"><a href="./"><img src="../assets/img/jam.jpg" class="img-circle" width="150" height="120"></a></p>
-              <h5 class="centered">Hi, Admin!!</h5>
+<h5 class="centered">Hi, <?php echo $_SESSION['username']; ?>&nbsp!</h5> 
 
                   <li class="sub-menu">
                       <a class="active" href="../">
