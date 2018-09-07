@@ -29,7 +29,7 @@ if(strpos($id,"RM") !== false){
 	$sql = "INSERT into information_admin(username,id_ik,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
 } else if(strpos($id,"H") !== false){
 	$sql = "INSERT into information_admin(username,id_hotel,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
-} else if(strpos($id,"OW") !== false){
+} else if(strpos($id,"tw") !== false){
 	$sql = "INSERT into information_admin(username,id_ow,informasi,tanggal,id_informasi) values('$nama','$id','$info','$tanggal','$id_informasi')";
 }
 

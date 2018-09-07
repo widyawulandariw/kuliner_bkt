@@ -29,7 +29,7 @@ if(strpos($id,"RM") !== false){
 	$sql = "INSERT into review(name,id_ik,comment,tanggal,id_review) values('$nama','$id','$comment','$tanggal','$id_review')";
 } else if(strpos($id,"H") !== false){
 	$sql = "INSERT into review(name,id_hotel,comment,tanggal,id_review) values('$nama','$id','$comment','$tanggal','$id_review')";
-} else if(strpos($id,"OW") !== false){
+} else if(strpos($id,"tw") !== false){
 	$sql = "INSERT into review(name,id_ow,comment,tanggal,id_review) values('$nama','$id','$comment','$tanggal','$id_review')";
 }
 
