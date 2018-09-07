@@ -3200,7 +3200,16 @@ hapusawal();
             <ul class="sidebar-menu" id="nav-accordion">
               
               <p class="centered"><a href="#"><img src="assets/img/jam.jpg" class="img-circle" width="150" height="120"></a></p>
-              <h5 class="centered">Hi, Visitor!!</h5>
+              <h5 class="centered">Hi, 
+              <?php 
+              if ($_SESSION['C'] == true) {
+                echo $_SESSION['username']; 
+              }
+              else{
+                echo "Visitor";
+              }
+              
+              ?>&nbsp!</h5>
 
             <br>
 
