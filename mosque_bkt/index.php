@@ -422,6 +422,21 @@
                       </div>
                   </section>
               </div>
+              <div class="col-sm-4" id="resultsekitar" style="display:none">
+    <section class="panel">
+                    <div class="panel-body">
+                        <a class="btn btn-compose">Result</a>
+                        <div class="box-body" style="max-height:400px;overflow:auto;">
+             
+                      <div class="form-group" id="hasilcariresult" style="display:none;">
+                        <table class="table table-bordered" id='hasilcarisekitar'>
+                        </table>  
+                      </div>                   
+                  </div>
+                    </div>
+                </section>
+                 </div>
+
               <div class="col-sm-4" id="result">
     <section class="panel">
                     <div class="panel-body">
@@ -443,7 +458,7 @@
                         <a class="btn btn-compose">Event</a>
                         <div class="box-body" style="max-height:350px;overflow:auto;">
              
-                      <div class="form-group" id="hasilcari1">
+                      <div class="form-group" id="hasilcarievent">
                         <table id="example1" class="table table-hover table-bordered table-striped">
                         <thead>
                         <tr>
@@ -513,7 +528,7 @@
                     </div>
                 </section>
                  </div>
-
+<!-- 
                  <div class="col-sm-8" style="display:none;" id="infoo1">
     <section class="panel">
                     <div class="panel-body">
@@ -527,7 +542,7 @@
                   </div>
                     </div>
                 </section>
-                 </div>
+                 </div> -->
 				 
 				 <div class="col-sm-4" style="display:none;" id="resultaround">
     <section class="panel">
