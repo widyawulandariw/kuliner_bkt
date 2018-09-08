@@ -865,7 +865,11 @@ function carikategori()
 
   function cari_masjid(rows) //fungsi cari mesjid berdasarkan nama
   {   
+     $('#result').show();
      $('#hasilcari1').show();
+
+     $('#hasilcari').show();
+     $('#resultsekitar').hide();
     $('#hasilcari').empty();
       hapusInfo();
       clearroute2();
@@ -899,7 +903,7 @@ function carikategori()
               map.setCenter(centerBaru);
 			  klikInfoWindow(id);
               map.setZoom(14);
-              $('#hasilcari').append("<tr><td>"+nama+"</td><td><a role='button' class='btn btn-success' onclick='detailmasjid(\""+id+"\");info1();'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' title='jalur angkot' onclick='angkotmesjid(\""+id+"\",\""+latitude+"\",\""+longitude+"\");info12();'></a></td></tr>");
+              $('#hasilcari').append("<tr><td>"+nama+"</td><td><a role='button' class='btn btn-success' onclick='detailmasjid(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' title='jalur angkot' onclick='angkotmesjid(\""+id+"\",\""+latitude+"\",\""+longitude+"\");info12();'></a></tr>");
             }
             }
 			
@@ -1472,7 +1476,7 @@ function detailmasjid(id1){  //menampilkan informasi masjid
             $('#info').append("<tr><td><b>Name</b></td><td>:</td><td> "+nama+"</td></tr><tr><td><b>Address </b></td><td>:</td><td> "+alamat+"</td></tr><tr><td><b>Capacity</b></td><td>:</td><td>"+kapasitas+" Jamaah</td></tr><tr><td><b>Land Size</b></td><td>:</td><td> "+luas_tanah+" m<sup>2</sup></td></tr><tr><td><b>Building Size</b></td><td>:</td><td> "+luas_bangunan+" m<sup>2</sup></td></tr><tr><td><b>Park Area Size</b></td><td>:</td><td> "+luas_area_parkir+" m<sup>2</sup></td></tr><tr><td><b>Establish</b></td><td>:</td><td> "+thn_berdiri+"</td></tr><tr><td><b>Last Renovation</b></td><td>:</td><td> "+thn_renovasi_terakhir+"</td></tr><tr><td><b>Imam</b></td><td>:</td><td> "+jml_imam+"</td></tr><tr><td><b>Jamaah</b></td><td>:</td><td> "+jml_jamaah+"</td></tr><tr><td><b>Teenager</b></td><td>:</td><td> "+jml_remaja+"</td></tr><tr><td><b>Category</b></td><td>:</td><td> "+nama_kat+"</td></tr><tr><td><a class='btn btn-default' role=button' data-toggle='collapse' href='#terdekat1' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")' title='Nearby' aria-controls='Nearby'><i class='fa fa-compass' style='color:black;''></i><label>&nbsp Attraction Nearby</label></a><div class='collapse' id='terdekat1'><div class='well' style='width: 150%'><div class='checkbox'><label><input id='check_t' type='checkbox'>Tourism</label></div><div class='checkbox'><label><input id='check_i' type='checkbox'>Small Industry</label></div><div class='checkbox'><label><input id='check_oo' type='checkbox' value=''>Souvenir</label></div><div class='checkbox'><label><input id='check_k' type='checkbox' value=''>Culinary</label></div><div class='checkbox'><label><input id='check_h' type='checkbox' value='5'>Hotel</label></div><div class='checkbox'><label><input id='check_r' type='checkbox' value=''>Restaurant</label></div><label><b>Radius&nbsp</b></label><label style='color:black' id='km1'><b>0</b></label>&nbsp<label><b>m</b></label><br><input  type='range' onchange='cek1();aktifkanRadiusSekitar();resultt1();info1();' id='inputradius1' name='inputradius1' data-highlight='true' min='1' max='15' value='1' ></div></div></td></tr>")
 			 infowindow = new google.maps.InfoWindow({
             position: centerBaru,
-            content: "<span style=color:black><center><b>Information</b><br><img src='"+fotosrc+image+"' alt='image in infowindow' width='150'></center><br><i class='fa fa-home'></i> "+nama+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><br><input type='button' class='btn btn-success' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp&nbsp<input type='button' class='btn btn-success' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+            content: "<span style=color:black><center><b>Information</b><br><img src='"+fotosrc+image+"' alt='image in infowindow' width='150'></center><br><i class='fa fa-home'></i> "+nama+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><br><input type='button' class='btn btn-success' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp&nbsp<input type='button' class='btn btn-success' value='Gallery' onclick='galeri(\""+id+"\")'></a>&nbsp<a role='button' title='around' class='btn btn-success' value='Object Around' onclick='objectAround();tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")'>Object Around</a></span>",
             pixelOffset: new google.maps.Size(0, -33)
             });
           infoDua.push(infowindow); 
@@ -1550,18 +1554,25 @@ function detailmes_infow(id){  //menampilkan informasi masjid
             map.setZoom(18); 
             infowindow = new google.maps.InfoWindow({
             position: centerBaru,
-            content: "<span style=color:black><center><b>Information</b><br><img src='"+fotosrc+image+"' alt='image in infowindow' width='150'></center><br><i class='fa fa-home'></i> "+nama+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+            content: "<span style=color:black><center><b>Information</b><br><img src='"+fotosrc+image+"' alt='image in infowindow' width='150'></center><br><i class='fa fa-home'></i> "+nama+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a>&nbsp<a role='button' title='around' class='btn btn-success' value='Object Around' onclick='objectAround();tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")'>Object Around</a></span>",
             pixelOffset: new google.maps.Size(0, -33)
             });
           infoDua.push(infowindow); 
           hapusInfo();
           infowindow.open(map);
-            
           }  
            
 
         }
       }); 
+}
+
+function objectAround(){
+  $('#hasilcari1').hide();
+  $('#result').hide();
+  $('#resultsekitar').show();
+  $('#resultsekitar').empty();
+  $('#resultsekitar').append("<div class='' id='terdekat1'><div class='well' style='width: 150%'><div class='checkbox'><label><input id='check_t' type='checkbox'>Tourism</label></div><div class='checkbox'><label><input id='check_i' type='checkbox'>Small Industry</label></div><div class='checkbox'><label><input id='check_oo' type='checkbox' value=''>Souvenir</label></div><div class='checkbox'><label><input id='check_k' type='checkbox' value=''>Culinary</label></div><div class='checkbox'><label><input id='check_h' type='checkbox' value='5'>Hotel</label></div><div class='checkbox'><label><input id='check_r' type='checkbox' value=''>Restaurant</label></div><label><b>Radius&nbsp</b></label><label style='color:black' id='km1'><b>0</b></label>&nbsp<label><b>m</b></label><br><input  type='range' onchange='cek1();aktifkanRadiusSekitar();resultt1();' id='inputradius1' name='inputradius1' data-highlight='true' min='1' max='15' value='1' ></div></div>");
 }
 
 function galeri(a){    
@@ -3068,6 +3079,7 @@ function hideLegenda() {
 
 function reset(){
   $("#hasilcari1").hide();
+     $('#resultsekitar').hide();
 
   hapusInfo();
   clearroute2();
@@ -3081,6 +3093,7 @@ function owtampil(){
   $("#att2").hide();
   $("#radiuss").hide();
   $("#infoo1").hide();
+     $('#resultsekitar').hide();
   $("#infoev").hide(); 
 }
 
@@ -3090,6 +3103,7 @@ function rutetampil(){
   $("#radiuss").hide();
   $("#infoo1").hide();
   $("#infoev").hide();
+     $('#resultsekitar').hide();
   $("#infoo").show();
 }
 
@@ -3098,6 +3112,7 @@ function info1(){
   $("#att2").hide();
   $("#radiuss").hide()
   $("#infoo1").hide();;
+     $('#resultsekitar').hide();
   
   $("#infoev").hide();   
 }
@@ -3108,6 +3123,7 @@ function infoev(){
   $("#infoev").show();
   $("#radiuss").hide()
   $("#infoo1").hide();
+     $('#resultsekitar').hide();
  
   
 }
@@ -3117,6 +3133,7 @@ function info12(){
   $("#radiuss").hide();
   $("#infoo").hide();
   $("#att2").hide();
+     $('#resultsekitar').hide();
   $("#infoev").hide();   
 }
 
@@ -3128,6 +3145,7 @@ function eventt(){
   $("#infoo").hide();
   $("#showlist").hide();
   $("#radiuss").hide();
+     $('#resultsekitar').hide();
   $("#infoo1").hide();
   $("#att2").hide();
   $("#infoev").hide();   
@@ -3143,6 +3161,7 @@ function resultt(){
   $("#showlist").hide();
   $("#radiuss").hide();
   $("#infoo1").hide();
+     $('#resultsekitar').hide();
   $("#att2").hide();
   $("#infoev").hide(); 
 }
@@ -3158,6 +3177,7 @@ function resultt1(){
   $("#radiuss").hide();
   $("#infoo1").hide();
   $("#att2").hide();
+     $('#resultsekitar').hide();
   $("#infoev").hide(); 
 }
 
@@ -3171,6 +3191,7 @@ function list(){
   $("#radiuss").hide();
   $("#infoo1").hide();
   $("#att2").hide();
+     $('#resultsekitar').hide();
   $("#infoev").hide(); 
 }
 
@@ -3181,6 +3202,7 @@ function resetangkot(){
   $("#showlist").hide();
   $("#radiuss").hide();
   $("#infoo1").hide();
+     $('#resultsekitar').hide();
   $("#infoev").hide();
 }
 
