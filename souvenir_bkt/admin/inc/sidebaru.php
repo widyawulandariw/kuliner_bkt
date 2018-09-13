@@ -39,7 +39,7 @@
 
 
                   <li class="sub-menu">
-                    <a href="?page=user_management">
+                    <a href="?page=ubahpw">
                     <i class="fa fa-cog"></i>
                     <span>Change Password</span>
                     </a>
