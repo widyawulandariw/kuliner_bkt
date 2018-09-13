@@ -44,6 +44,9 @@
       
       <a href="?page=editjnskul&id=<?php echo $id; ?>" class="btn btn-round btn-default" title='Edit'><i class="fa fa-edit"></i> Edit</a>
       </div>
+      <div class="btn-group">
+        <a href="act/delete_culinary.php?id=<?php echo $id; ?>" onclick="return confirm('Are You Sure Want To Delete?')" class="btn btn-round btn-default" title='Delete'><i class="fa fa-trash"></i> Delete</a>
+        </div>
       
     </tr>
 <?php

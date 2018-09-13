@@ -398,10 +398,10 @@ session_start();
 
                       <header class="panel-heading" style="float:left">
                       <label style="color: black; margin-right:20px">Google Map with Location List</label>
-                  <button type="button" onclick="posisisekarang()" class="btn btn-default " data-toggle="tooltip" id="posisinow" title="Posisi Saya" style="margin-right: 7px;" ><i class="fa fa-location-arrow" > </i>
+                  <button type="button" onclick="posisisekarang()" class="btn btn-default " data-toggle="tooltip" id="posisinow" title="Posisi Saya" style="margin-right: 7px;" ><i class="fa fa-location-arrow" style="color:black;" > </i>
                       </button>
 
-                       <button type="button" onclick="lokasimanual()" class="btn btn-default"  data-toggle="tooltip" id="posmanual" title="Posisi Manual" style="margin-right: 7px;"><i class="fa fa-map-marker" ></i>
+                       <button type="button" onclick="lokasimanual()" class="btn btn-default"  data-toggle="tooltip" id="posmanual" title="Posisi Manual" style="margin-right: 7px;"><i class="fa fa-map-marker" style="color:black;"></i>
                       </button>
                                             
                        <!-- <label id="tombol">
@@ -505,8 +505,8 @@ function showDivs(n) {
     function init()
     {
       basemap();
-      viewdigitcul();
-      viewdigitkec();
+      // viewdigitcul();
+      // viewdigitkec();
     }
 
     function hapusrouteangkot() 
@@ -809,7 +809,7 @@ function showDivs(n) {
 
     //Menampilkan Detail Info Kuliner
     function detculi(id14433){  
-      
+      alert('hai jack');
       $('#info').empty();
       $('#tampilangkotsekitarik').hide();
       $("#hasilrute").hide();
@@ -849,7 +849,7 @@ function showDivs(n) {
                 position: centerBaru,
                 // content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home'></i>Nama</td><td>:</td><td> "+namaa+"</td></tr><br><tr><td><i class='fa fa-map-marker'></i>Alamat</td><td>:</td><td> "+address+"</td></tr><br><tr><td><i class='fa fa-phone'></i>Telepon</td><td>:</td><td> "+cp+"</td></tr><br><tr><td><i class='fa fa-clock-o'></i>Open</td><td>:</td><td> "+open+"</td></tr><br><tr><td><i class='fa fa-clock-o'></i>Close</td><td>:</td><td> "+close+"</td></tr><br><tr><td><i class='fa fa-building'></i>Capacity</td><td>:</td><td> "+capacity+"</td></tr></table></span><br><input type='button' class='btn btn-success' value='Object Arround' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+namaa+"\")'<br>&nbsp&nbsp<input type='button' class='btn btn-success' value='Gallery' onclick='gallery(\""+id+"\")'<br>&nbsp&nbsp <input type='button' class='btn btn-success' value='Route' onclick='callRoute(centerLokasi,centerBaru);rutetampil()' />",   
 
-                content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home'></i>Nama</td><td>:</td><td> "+namaa+"</td></tr>",   
+                content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home' style='color:black'></i>Nama</td><td>:</td><td> "+namaa+"</td></tr>",   
                 pixelOffset: new google.maps.Size(0, -33)
                 });
               infoposisi.push(infowindow); 
