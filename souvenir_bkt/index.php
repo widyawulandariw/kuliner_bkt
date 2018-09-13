@@ -3451,7 +3451,7 @@ hapusawal();
                   <li class="sub-menu">
                     <a href="javascript:;" >
                       <i class="fa fa-money"></i>
-                      <span>Traditional Fabric</span>
+                      <span>Craft</span>
                     </a>
                     <ul class="sub">
                        <div class=" form-group"> <br>
