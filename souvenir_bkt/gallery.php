@@ -211,9 +211,10 @@ session_start();
                           <?php 
                           if ($_SESSION['C'] == true) 
                           {
-                            echo "<tr><td>Name :</td><td><textarea cols='30' rows='1' name='nama'></textarea></td></tr>
-                          <tr><td>Comment :</td><td><textarea cols='30' rows='5' name='comment'></textarea></td></tr>
-                          <tr><td><input type='submit' value='Post Comment'/></td><td></td></tr>";
+                            $username = $_SESSION['username'];
+                            echo "<tr><td>Comment :</td><td><textarea cols='30' rows='5' name='comment'></textarea></td></tr>
+                          <tr><td><input type='submit' value='Post Comment'/></td><td><input name='nama' value='$username' hidden></td>
+                          </tr>";
                           }
                           ?>
                             
