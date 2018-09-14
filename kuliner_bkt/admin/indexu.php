@@ -89,14 +89,14 @@ $id = $data_rm['id'];
  
       </section> 
  
-       <footer class="site-footer"> 
+       <!-- <footer class="site-footer"> 
           <div class="text-center"> 
               Fitriany Chairunnisa - 1311521018 
-              <!-- <a href="index.html#" class="go-top"> 
+              <a href="index.html#" class="go-top"> 
                   <i class="fa fa-angle-up"></i> 
-              </a> --> 
+              </a> 
           </div> 
-      </footer> 
+      </footer> --> 
       <!--footer end--> 
   </section> 
  
