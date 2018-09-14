@@ -809,7 +809,6 @@ function showDivs(n) {
 
     //Menampilkan Detail Info Kuliner
     function detculi(id14433){  
-      alert('hai jack');
       $('#info').empty();
       $('#tampilangkotsekitarik').hide();
       $("#hasilrute").hide();
