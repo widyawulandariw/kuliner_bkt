@@ -1,13 +1,16 @@
 <?php
-include ('../../../connect.php');
 session_start();
-$id_detail_keg = $_POST['id_detail_keg'];
+include ('../../../connect.php');
+
 $keg = $_POST['keg'];
 $jam = $_POST['jam'];
 $tgl = $_POST['tgl'];
 $ustad = $_POST['ustad'];
-$penyelenggara = $_POST['penyelenggara'];
-$sql = pg_query("insert into detail_event values ('$tgl','$jam', '$ustad','$keg','$_SESSION[id]', '$penyelenggara')");
+$description = $_POST['description'];
+$id_mesjid = $_SESSION['id_mesjid'];
+
+// echo "id = $id_mesjid";
+$sql = pg_query("insert into detail_event(date,time,id_ustad,id_event,id_worship_place,description) values ('$tgl','$jam','$ustad','$keg','$id_mesjid','$description')");
 
 if ($sql){
 	echo "<script>

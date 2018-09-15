@@ -1,26 +1,42 @@
 <?php
 include ('../../../connect.php');
-$id = $_POST['id'];
+
+//$id = $_POST['id'];
 $stewardship_period = $_POST['stewardship_period'];
-$id_mesjid = $_POST['id_mesjid'];
-$nama_pengurus = $_POST['nama_pengurus'];
+$id = $_POST['id'];
+$nama = $_POST['nama'];
 $password = $_POST['password'];
 $pass = md5(md5($password));
 $role = $_POST['role'];
 $no_hp = $_POST['no_hp'];
-$alamat_pengurus = $_POST['alamat_pengurus'];
-$periode_pengurusan = $_POST['periode_pengurusan'];
+$alamat = $_POST['alamat'];
+$periode = $_POST['periode'];
 $username = $_POST['username'];
+$aset = $_POST['aset'];
 
-$sql  = "update administrators set id_worship_place='$id_mesjid', name='$nama_pengurus', password='$pass', role='$role', hp='$no_hp', address='$alamat_pengurus', stewardship_period='$periode_pengurusan', username='$username' where id_worship_place='$id' and stewardship_period='$stewardship_period'";
-$update = pg_query($sql);
+$sql  = "UPDATE admin set name='$nama', password='$pass', role='$role', hp='$no_hp', address='$alamat', stewardship_period='$periode', username='$username' where username='$username'";
 
-if ($update){
+$updateMesjid = pg_query("UPDATE worship_place set username=null where username='$username'"); 
+
+$insert = pg_query($sql);
+if($insert){
+	for($i=0;$i<count($_POST['aset']);$i++){ 
+		// echo"$username";
+		$id = $_POST['aset'][$i]; 
+		// echo "$id";
+		$updateMesjid = pg_query("UPDATE worship_place set username='$username' where id = '$id'"); 
+	} 
+}
+
+if ($insert)
+	{
+	echo "<script>alert ('Data Successfully Change');</script>";
+	}
+else
+	{
+	echo "<script>alert ('Error');</script>";
+	}
 	echo "<script>
-		alert (' Data Successfully Change');
 		eval(\"parent.location='../?page=listpengurus'\");
 		</script>";
-}else{
-	echo 'error';
-}
 ?>

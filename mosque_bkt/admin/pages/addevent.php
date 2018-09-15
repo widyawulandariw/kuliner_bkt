@@ -38,10 +38,10 @@
           <div class="col-sm-10">
 		  <div class="input-group bootstrap-timepicker">
       
-		  <input type="text" class="form-control timepicker-default" name="jam">
+		  <input type="time" class="form-control" name="jam">
 
          <span class="input-group-btn">
-           <button class="btn btn-theme04" type="button"><i class="fa fa-clock-o"></i></button>
+           <!-- <button class="btn btn-theme04" type="button"><i class="fa fa-clock-o"></i></button> -->
            </span>
 
 		  </div>
@@ -50,7 +50,7 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label" for="jam"><span style="color:red"></span>Date</label>
           <div class="col-sm-10">
-          <input type="text" class="form-control form-control-inline input-medium default-date-picker" size="16" name="tgl" value="">
+          <input type="date" class="form-control" size="16" name="tgl" value="">
           </div>
         </div>
         <div class="form-group">
@@ -72,7 +72,7 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label" for="org">Description</label>
           <div class="col-sm-10">
-          <input type="text" class="form-control" name="penyelenggara" value="">
+          <input type="text" class="form-control" name="description" value="">
         </div>
         </div> 
         <button type="submit" class="btn btn-primary pull-right" onclick="show1()">Save <i class="fa fa-floppy-o"></i></button>  

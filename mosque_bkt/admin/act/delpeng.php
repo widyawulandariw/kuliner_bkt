@@ -1,21 +1,21 @@
 <?php
 include ('../../../connect.php');
-$id = $_GET['id'];
-$periode = $_GET['periode'];
+$id = $_GET['username'];
 	
-	$sql   = "delete from administrators where id_worship_place='$id' and stewardship_period='$periode'";
-
-	
+	$sql   = "DELETE from admin where username='$id'";
+	$sql1  = "UPDATE worship_place set username = null where username='$id'";
+	$delete1 = pg_query($sql1);
 	$delete = pg_query($sql);
-	if ($delete){
-			echo "<script>
-		alert (' Data Successfully Delete');
-		eval(\"parent.location='../?page=listpengurus'\");
-		</script>";
-	}
-	else{
-		echo 'error';
 
+	$delete = pg_query($sql);
+	if ($delete)
+	{
+		echo "<script>alert ('Data Successfully Deleted');</script>";
+	}
+	else
+	{
+		echo "<script>alert ('Error');</script>";
 	}
 
+	echo "<script>eval(\"parent.location='../?page=listpengurus'\");</script>";
 ?>

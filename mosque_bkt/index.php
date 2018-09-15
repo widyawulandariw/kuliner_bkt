@@ -1,3 +1,6 @@
+<?php 
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -89,7 +92,25 @@
       <header class="header black-bg">
              
             <a class="logo"><p><img src="assets/ico/111.png"><b>W</b>EB<b style="font-size: 17px">GIS</b></p></a>
-            <a href="admin/login.php" class="logo1" title="Login" style="margin-top: 10px"><img src="assets/ico/112.png"></a>
+            <!-- <a href="admin/login.php" class="logo1" title="Login" style="margin-top: 10px"><img src="assets/ico/112.png"></a> -->
+            <h4>
+            <div class="top-menu">
+              <ul class="nav pull-right" style="margin-top: 6px">
+                   <?php 
+                   if ($_SESSION['C'] == false) 
+                   {
+                    echo "<a href='admin/' class='logo1' title='Login' ><img src='image/login.png'>
+                   <span>Login</span></a>";
+                   }
+                   else
+                   {
+                    echo "<a href='admin/act/logout.php' class='logo1' title='Login' ><img src='image/login.png'>
+                   <span>Logout</span></a>";
+                   }
+                    ?>
+              </ul> 
+            </div></h4>
+            
  
         </header>
       <aside>
@@ -97,7 +118,16 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
                   <p class="centered"><a href="profile.html"><img src="assets/img/masjid.png" class="img-circle" width="90"></a></p>
-				          <h5 class="centered">Hi, Visitor!!</h5>
+				          <h5 class="centered">Hi, 
+                  <?php 
+                  if ($_SESSION['C'] == true) {
+                    echo $_SESSION['username']; 
+                  }
+                  else{
+                    echo "Visitor";
+                  }
+                  
+                  ?>&nbsp!</h5>
 
                   <br>
 

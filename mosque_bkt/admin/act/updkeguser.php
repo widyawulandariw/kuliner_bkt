@@ -1,17 +1,17 @@
 <?php
+session_start();
 include ('../../../connect.php');
 
-
-$id	= $_POST['id'];
-$time = $_POST['time'];
-$date = $_POST['date'];
-$id_keg = $_POST['id_keg'];
+$keg = $_POST['keg'];
 $jam = $_POST['jam'];
-$tgl_keg = $_POST['tgl_keg'];
-$id_ustad = $_POST['id_ustad'];
-$materi = $_POST['materi'];
+$tgl = $_POST['tgl'];
+$ustad = $_POST['id_ustad'];
+$description = $_POST['materi'];
+$id_worship_place = $_POST['id_wor'];
 
-$sql  = "update detail_event set id_event='$id_keg', time='$jam', date='$tgl_keg', id_ustad='$id_ustad', description='$materi' where time='$time' and date='$date' and id_worship_place='$id'";
+
+$sql = "UPDATE detail_event set id_event='$keg',time='$jam',date='$tgl',id_ustad='$ustad',description='$description' where id_worship_place='$id_worship_place'";
+
 $update = pg_query($sql);
 
 if ($update){

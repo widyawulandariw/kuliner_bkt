@@ -4,45 +4,48 @@
                         <a href="?page=user" title="Add Pengurus" class="btn btn-compose"><i class="fa fa-plus"></i>List Pengurus</a>
                         <div class="box-body">
              
-                      <div class="form-group">
-                       <table id="example1" class="table table-hover table-bordered table-striped">
-                        <thead>
-                        <tr>
-                        <th>Username</th>
-                        <th>Name</th>
-						<th>Periode</th>
-						<th>Mesjid</th>
-                        <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+    <br>
+    <div class="form-group">
+        <table id="example1" class="table table-hover table-bordered table-striped">
+            <thead>
+            <tr>
+            <th style="width:200px;color:black">Username</th> 
+            <th style="width:200px;color:black">Name</th> 
+            <th style="width:200px;color:black">Periode</th><th style="width:200px;color:black">Action</th> 
+            </tr>
+            </thead>
+            <tbody>
 
-                        <?php
-                       
-                        $sql = pg_query("SELECT a.id_worship_place,a.name as admin_name, a.stewardship_period, a.username, b.name as worship_place_name  from administrators as a, worship_place as b where a.id_worship_place=b.id");
-                        while($data =  pg_fetch_array($sql)){
-                        $id = $data['id_worship_place'];
-						$mesjid = $data['worship_place_name'];
-						$periode = $data['stewardship_period'];
-                        $username = $data['username'];
-                        $nama = $data['admin_name'];
-                        ?>
-                        <tr>
-                        <td><?php echo "$username"; ?></td>
-                        <td><?php echo "$nama"; ?></td>
-						<td><?php echo "$periode"; ?></td>
-						<td><?php echo "$mesjid"; ?></td>
-                        <td><div class="btn-group">
-                        <a href="?page=userupdate&id=<?php echo $id; ?>&stewardship_period=<?php echo $periode; ?>" class="btn btn-sm btn-default" title='Ubah'><i class="fa fa-edit"></i> Update</a>
-						<a href="act/delpeng.php?id=<?php echo $id; ?>&periode=<?php echo $periode; ?>" class="btn btn-sm btn-default" title='Delete'><i class="fa fa-trash-o"></i></a>
-                        </div>
-                        </td>
-                        </tr>
-                        <?php } ?>
-                        </tbody>
-                        </table> 
-                      </div>                   
-                  </div>
-                    </div>
-                </section>
-                 </div>
+            <?php 
+            $sql = pg_query("SELECT name , stewardship_period, username from admin"); 
+                while($data =  pg_fetch_array($sql)){ 
+                    $username = $data['username']; 
+                    $nama = $data['name']; 
+                    $periode = $data['stewardship_period'];           
+            ?> 
+                             
+            <tr> 
+            <td><?php echo "$username"; ?></td> 
+            <td><?php echo "$nama"; ?></td> 
+            <td><?php echo "$periode"; ?></td>
+            <td> 
+ 
+            <div class="btn-group"> 
+            <a href="?page=userupdate&username=<?php echo $username; ?>" class="btn btn-round btn-default" title='Update'><i class="fa fa-exclamation-circle"></i>Update</a> 
+            &nbsp&nbsp 
+            </div> 
+             
+            <div class="btn-group"> 
+            <a href="act/delpeng.php?username=<?php echo $username; ?>" onclick="return confirm('Are You Sure Want To Delete?')" class="btn btn-round btn-default" title='Delete'><i class="fa fa-trash"></i>Delete</a> 
+            </div> 
+                                </td> 
+                            </tr> 
+            <?php }  
+            ?> 
+                        </tbody> 
+                    </table>  
+                </div>                    
+            </div> 
+        </div> 
+    </section> 
+</div>

@@ -1,7 +1,7 @@
 <?php
 include ('../../../connect.php');
 $id = $_GET['id'];
-	$sql   = "delete from detail_event where id_det_event=$id";
+	$sql   = "delete from detail_event where id_event='$id'";
 	
 	$delete = pg_query($sql);
 	if ($delete){
