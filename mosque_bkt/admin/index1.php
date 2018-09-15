@@ -8,7 +8,7 @@ include("../../connect.php");?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Mosque Finder</title>
+    <title>Mosque Steward's ADMIN</title>
 
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">

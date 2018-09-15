@@ -10,23 +10,26 @@
 					$id=$_GET['id'];
           $jam=$_GET['jam'];
           $tgl_keg=$_GET['date'];
-					$sql = pg_query("SELECT detail_event.id_event, detail_event.id_worship_place,event.name as event_name, detail_event.date, detail_event.id_ustad, ustad.name as ustad_name, detail_event.description, detail_event.time FROM detail_event join event on detail_event.id_event=event.id join worship_place on detail_event.id_worship_place=worship_place.id join ustad on detail_event.id_ustad=ustad.id where detail_event.date='$tgl_keg' and detail_event.time='$jam' and detail_event.id_worship_place='$id'");
+          $ustad = $_POST['ustad'];
+          $desc = $_POST['description'];
+          echo "";
+					$sql = pg_query("SELECT detail_event.id_event, detail_event.id_worship_place,event.name as event_name, detail_event.date, detail_event.id_ustad, ustad.name as ustad_name, detail_event.description as description, detail_event.time FROM detail_event join event on detail_event.id_event=event.id join worship_place on detail_event.id_worship_place=worship_place.id join ustad on detail_event.id_ustad=ustad.id where detail_event.date='$tgl_keg' and detail_event.time='$jam' ");
 					$data = pg_fetch_array($sql);							
 						?>
                         <form class="form-horizontal style-form" role="form" action="act/updkeguser.php" method="post">
-                        <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $data['id_worship_place']?>">
+                        <input type="text" class="form-control hidden" id="id_wor" name="id_wor" value="<?php echo $data['id_worship_place']?>">
                         <input type="text" class="form-control hidden" id="time" name="time" value="<?php echo $data['time']?>">
                         <input type="text" class="form-control hidden" id="date" name="date" value="<?php echo $data['date']?>">
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label" for="id_keg"><span style="color:red"></span>Name</label>
           <div class="col-sm-10">
-          <select  name="id_keg" id="id_keg" class="form-control">
+          <select  name="keg" id="keg" class="form-control">
            <?php
              $jenis=pg_query("select * from event ");
               while($rowkeg = pg_fetch_assoc($jenis))
               {
 			  
-			   if ($data[id_event]==$rowkeg[id]){
+			   if ($id==$rowkeg[id]){
 									echo "<option value=\"$rowkeg[id]\" selected>$rowkeg[name]</option>";}
 								else{
 									echo"<option value=\"$rowkeg[id]\">$rowkeg[name]</option>";}
@@ -42,7 +45,7 @@
           <div class="col-sm-10">
 		  <div class="input-group bootstrap-timepicker">
       
-		  <input type="text" class="form-control timepicker-default" name="jam" value="<?php echo $data['time']?>">
+		  <input type="time" class="form-control" name="jam" value="<?php echo $jam ;?>">
 
          <span class="input-group-btn">
            <button class="btn btn-theme04" type="button"><i class="fa fa-clock-o"></i></button>
@@ -54,7 +57,7 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label" for="tgl_keg"><span style="color:red"></span>Date</label>
           <div class="col-sm-10">
-          <input type="text" class="form-control form-control-inline input-medium default-date-picker" size="16" name="tgl_keg" value="<?php echo $data['date']?>">
+          <input type="date" class="form-control form-control-inline input-medium " size="16" name="tgl" value="<?php echo $tgl_keg;?>">
           </div>
         </div>
         <div class="form-group">
@@ -79,7 +82,7 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label" for="materi">Description</label>
           <div class="col-sm-10">
-          <input type="text" class="form-control" name="materi" value="<?php echo $data['description'] ?>">
+          <input type="text" class="form-control" name="materi" value="<?php echo $data[description]; ?>">
         </div>
         </div> 
         <button type="submit" class="btn btn-primary pull-right" onclick="show1()">Save <i class="fa fa-floppy-o"></i></button>  

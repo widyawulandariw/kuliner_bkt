@@ -5,7 +5,7 @@ require 'act/viewdatamas.php';
 <ul class="sidebar-menu" id="nav-accordion">
               
                   <p class="centered"><a href="profile.html"><img src="../assets/img/fr-10.jpg" class="img-circle" width="60"></a></p>
-                  <h5 class="centered"><p><?php echo $_SESSION['name']; ?></p></h5>
+                  <h5 class="centered">Hi, <?php echo $_SESSION['username']; ?>&nbsp!</h5>
                     
 				<li class="mt">
                       <a href="../")">
