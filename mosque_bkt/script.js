@@ -946,14 +946,13 @@ function carikategori()
             }
 
 function angkotmesjid(id_angkot, lat1, lng1){
- $('#infoak').empty();
-   hapusInfo();
-      clearroute2();
+    $('#infoak').empty();
+    hapusInfo();
+    clearroute2();
 	  clearroute();
     clearangkot();
-      hapusMarkerTerdekat();
-      console.log("d");
-	  $('#infoak').append("<thead><th class='centered'>Destination</th><th class='centered'>Info</th></thead>");
+    hapusMarkerTerdekat();
+    $('#infoak').append("<thead><th class='centered'>Destination</th><th class='centered'>Info</th></thead>");
 
      $.ajax({ 
         url: server+'angkotmesjid.php?id='+id_angkot, data: "", dataType: 'json', success: function(rows)
@@ -971,27 +970,24 @@ function angkotmesjid(id_angkot, lat1, lng1){
               var route_color = row.route_color;
               var latitude  = row.latitude ;
               var longitude = row.longitude ;
-			var lat = row.lat;
-			  var lng = row.lng;
-				console.log(latitude);
-				console.log(longitude);
+      		  	var lat = row.lat;
+      			  var lng = row.lng;
+      				console.log(latitude);
+      				console.log(longitude);
               listgeom(id_angkot)
               tampilrute(id_angkot, route_color, latitude, longitude);
-			centerBaru = new google.maps.LatLng(latitude, longitude);
+		        	centerBaru = new google.maps.LatLng(latitude, longitude);
               marker = new google.maps.Marker
-            ({
-              position: centerBaru,
-              icon:'assets/ico/marker_masjid.png',
-              map: map,
-              animation: google.maps.Animation.DROP,
-            });
-            console.log(id_angkot);
-              console.log(latitude);
-              console.log(longitude);
+              ({
+                position: centerBaru,
+                icon:'assets/ico/marker_masjid.png',
+                map: map,
+                animation: google.maps.Animation.DROP,
+              });
               markersDua.push(marker);
               map.setCenter(centerBaru);
               map.setZoom(13);
-               $('#infoak').append("<tr><td>"+jurusan+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailangkot(\""+id_angkot+"\",\""+lat+"\",\""+lng+"\",\""+lat1+"\",\""+lng1+"\")'></a></td></tr> ");
+              $('#infoak').append("<tr><td>"+jurusan+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailangkot(\""+id_angkot+"\",\""+lat+"\",\""+lng+"\",\""+lat1+"\",\""+lng1+"\")'></a></td></tr> ");
             } 
            
           }
@@ -1350,22 +1346,22 @@ function detailangkot(id_angkot, lat, lng, lat1, lng1){
         
         tampilrute(id_angkot, route_color,latitude, longitude);
         var centerBaru = new google.maps.LatLng(latitude, longitude);
-              map.setCenter(centerBaru);
-              var marker = new google.maps.Marker({
-                position: centerBaru,
-                animation: google.maps.Animation.DROP,              
-                // icon:'assets/ico/marker_angkot.png',
-                map: map
-              });
-              var infowindow = new google.maps.InfoWindow({
-                    position: centerBaru,
-                    content: "<b><u>Information</u></b><br>Route Code: "+id_angkot+"<br>Destination: "+jurusan+"<br>Track: "+jalur_angkot+"",
-                  });
-                    infowindow.open(map);
-                    infoDua.push(infowindow); 
-                  infowindow.open(map);  
-		route_sekitar(lat,lng,lat1,lng1);
-		
+        map.setCenter(centerBaru);
+        var marker = new google.maps.Marker({
+          position: centerBaru,
+          animation: google.maps.Animation.DROP,              
+          // icon:'assets/ico/marker_angkot.png',
+          map: map
+        });
+        console.log(centerBaru)
+        let infowindow = new google.maps.InfoWindow({
+          position: centerBaru,
+          content: "<b><u>Information</u></b><br>Route Code: "+id_angkot+"<br>Destination: "+jurusan+"<br>Track: "+jalur_angkot+"",
+        }).open(map);
+        // infowindow.open(map);
+        console.log(infowindow)
+        infoDua.push(infowindow);  
+    		route_sekitar(lat,lng,lat1,lng1);
       }
       jalurAngkot.push(ja);
     }
