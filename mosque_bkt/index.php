@@ -321,10 +321,10 @@ session_start();
                           <br>
                           <button type="submit" class="btn btn-default" id="carikategori"  value="cari" onclick='tampiljurusan()'><i class="fa fa-search"></i></button>
                           </div>
-						  <!-- <div class="panel-body">
+						  <div class="panel-body">
                             <a style="margin-top: -20px; color: white" ><span>Nearby</span></a>
 							 <input  type="range" onclick="aktifkanRadiusAngkot();resultt()" id="inputradiusangkot" name="inputradiusangkot" data-highlight="true" min="0.5" max="15" value="0.5"> 
-                          </div> -->
+                          </div>
                       </ul>
                   </li>
                       </ul>
