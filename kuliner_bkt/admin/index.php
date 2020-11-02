@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['admin'])){
+if(!isset($_SESSION['A'])){
   echo"<script language='JavaScript'>document.location='login.php'</script>";
   exit();
 }
@@ -9,7 +9,7 @@ include("../../connect.php");?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ADMIN</title>
+    <title>Culinary ADMIN</title>
 
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNnzxae2AewMUN0Tt_fC3gN38goeLVdVE&sensor=true&libraries=drawing&callback=initialize"  async defer></script> -->
     <!-- <script src="mapedit.js" type="text/javascript"></script> -->
@@ -67,7 +67,7 @@ include("../../connect.php");?>
       if(file_exists($page)){
         include($page);
       }elseif($p==""){
-        include('pages/home.php');
+        include('pages/culinary.php');
       }else{
         include('pages/404.php');
       }
@@ -79,14 +79,14 @@ include("../../connect.php");?>
 
       </section>
 
-       <footer class="site-footer">
+       <!-- <footer class="site-footer">
           <div class="text-center">
               Fitriany Chairunnisa - 1311521018
-              <!-- <a href="index.html#" class="go-top">
+              <a href="index.html#" class="go-top">
                   <i class="fa fa-angle-up"></i>
-              </a> -->
+              </a>
           </div>
-      </footer>
+      </footer> -->
       <!--footer end-->
   </section>
 

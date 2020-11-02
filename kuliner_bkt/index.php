@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("../connect.php");
 ?>
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ require("../connect.php");
 <script type="text/javascript">
 
 // var server = "http://localhost/bkt_tourism/kuliner_bkt";
-var server = "http://localhost/html1/kuliner_bkt/";
+var server = "http://localhost/kuliner_bkt/kuliner_bkt/";
 var map;
 var markersDua = [];
 var koordinat = 'null'
@@ -2465,9 +2466,19 @@ function viewprice()
             <h4>
             <div class="top-menu">
               <ul class="nav pull-right" style="margin-top: 6px">
-                   <a href="admin/" class="logo1" title="Login" ><img src="image/login.png">
-                   <!-- <i class="fa fa-user"></i> -->
-                   <span>Login</span></a>
+                   <?php 
+                   if ($_SESSION['C'] == false) 
+                   {
+                    echo "<a href='admin/' class='logo1' title='Login' ><img src='image/login.png'>
+                   <span>Login</span></a>";
+                   }
+                   else
+                   {
+                    echo "<a href='admin/act/logout.php' class='logo1' title='Login' ><img src='image/login.png'>
+                   <span>Logout</span></a>";
+                   }
+                    ?>
+                   
               </ul>
             </div></h4>
 
@@ -2542,7 +2553,16 @@ function viewprice()
             <ul class="sidebar-menu" id="nav-accordion">
               
               <p class="centered"><a href="#"><img src="assets/img/kuliner.png" class="img-circle" width="150" height="120"></a></p>
-              <h5 class="centered">Hi, Visitor!!</h5>
+              <h5 class="centered">Hi, 
+              <?php 
+              if ($_SESSION['C'] == true) {
+                echo $_SESSION['username']; 
+              }
+              else{
+                echo "Visitor";
+              }
+              
+              ?>&nbsp!</h5>
 
             <br>
 

@@ -13,12 +13,12 @@
 
 
 <p class="centered"><a href="./"><img src="../assets/img/jam.jpg" class="img-circle" width="150" height="120"></a></p>
-              <h5 class="centered">Hi, Admin!!</h5>
+<h5 class="centered">Hi, <?php echo $_SESSION['username']; ?>&nbsp!</h5>
 
                   <li class="sub-menu">
                       <a class="active" href="../">
                           <i class="fa fa-dashboard"></i>
-                          <span>Halaman Pengguna</span>
+                          <span>User Access</span>
                       </a>
                   </li>
 
@@ -45,11 +45,19 @@
 
 
                   <li class="sub-menu">
-                    <a href="?page=listpemilik">
+                    <a href="?page=user_management">
                     <i class="fa fa-cog"></i>
                     <span>Manage User</span>
                     </a>
-                    </li>            
+                    </li> 
+
+
+                   <!--  <li class="sub-menu">
+                    <a href="?page=verification">
+                    <i class="fa fa-cog"></i>
+                    <span>Manage User Verification</span>
+                    </a>
+                    </li>  -->           
 
 
                    <?php

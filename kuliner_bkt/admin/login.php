@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-if(isset($_SESSION['admin'])){
+if(isset($_SESSION['A'])){
 	echo"<script language='JavaScript'>document.location='index.php'</script>";
     exit();
 }
@@ -45,7 +45,7 @@ if(isset($_SESSION['admin'])){
 	  	<div class="container">
 	  	
 		      <form class="form-login" action="act/session.php" method="post">
-		        <h2 class="form-login-heading">LOG IN NOW</h2>
+		        <h2 class="form-login-heading" >LOG IN NOW</h2>
 		        <div class="login-wrap" >
 		        <!--   <form > -->
       <div class="form-group has-feedback">
@@ -60,9 +60,19 @@ if(isset($_SESSION['admin'])){
         <div class="col-xs-8">
           
         </div>
-        <div class="col-xs-4">
+        <!-- <div class="col-xs-4"> -->
           <button type="submit" class="btn btn-primary btn-block btn-flat" name="submit">Log In</button>
         </div>
+
+        <br>
+        <div class="registration">
+                    Don't have an account yet?<br/>
+                    <a class="" href="pages/register.php">
+                        Create an account
+                    </a>
+                </div>
+        <hr>
+        <a href="../" class="btn btn-primary btn-block btn-flat" >Back</a>
       </div>
   <!--   </form> -->
 		       		<!-- <label>Username</label>

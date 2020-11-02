@@ -1,4 +1,11 @@
 <div class="row">
+    <?php
+    $query = pg_query("SELECT MAX(id) AS id FROM culinary_place");
+            $result = pg_fetch_array($query);
+            $idmax = $result['id'];
+            if ($idmax==null) {$idmax=1;}
+            else {$idmax++;}
+    ?>
 <form role="form" action="act/digitkulprocess.php" enctype="multipart/form-data" method="post">
                <div class="col-sm-8" id="hide2"> <!-- menampilkan peta-->
                   <section class="panel">
@@ -16,26 +23,31 @@
                   </section>
               </div>
 
-                    <div class="col-lg-4 ds"  id="hide3">
-            <a class="btn btn-info">Please Add The Data</a>
+          <div class="col-lg-4 ds"  id="hide3">
+            <!-- <a class="btn btn-info">Please Add The Data</a> -->
+
 
          <div class="form-group">
-          <label for="id"><span style="color:red">*</span> ID</label>
-          <input class="form-control" id="id" name="id" value="" required></input>
+          <!-- <label for="id"><span style="color:red">*</span> ID</label> -->
+          <input class="form-control hidden" id="id" name="id" value="<?php echo $idmax ?>"></input>
         </div>
+
         <div class="form-group">
           <label for="geom"><span style="color:red">*</span> Coordinate</label>
           <textarea class="form-control" id="geom" name="geom" readonly required></textarea>
         </div>
+        
         <div class="form-group">
           <label for="name"><span style="color:red">*</span>Name of Culinary</label>
           <input type="text" class="form-control" name="name" value="" required>
         </div>
-         <div class="form-group">
+        
+        <div class="form-group">
           <label for="address"><span style="color:red">*</span>Address</label>
           <input type="text" class="form-control" name="address" value="" required>
         </div>
-         <div class="form-group">
+        
+        <div class="form-group">
           <label for="cp"><span style="color:red">*</span> Contact Person</label>
           <input type="number" class="form-control" name="cp" value="" min="0" required>
         </div>
@@ -44,11 +56,13 @@
           <label for="open"><span style="color:red">*</span>Opened</label>
           <input type="time" class="form-control" name="open" value="" required>
         </div>
+        
         <div class="form-group">
           <label for="close"><span style="color:red">*</span>Closed</label>
           <input type="time" class="form-control" name="close" value="" required>
         </div>
-         <div class="form-group">
+        
+        <div class="form-group">
           <label for="capacity"><span style="color:red">*</span>Capasity</label>
           <input type="number" class="form-control" name="capacity" value="" min="0" required>
         </div>                  

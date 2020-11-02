@@ -1,3 +1,6 @@
+<?php 
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -76,13 +79,13 @@
         </div>
         <h4>
         
-        <div class="top-menu">
+        <!-- <div class="top-menu">
           <ul class="nav pull-right" style="margin-top: 6px">
-            <a href="admin/" class="logo1" title="Login" ><img src="image/login.png">
+            <a href="admin/" class="logo1" title="Login" ><img src="image/login.png"> -->
         <!-- <i class="fa fa-user"></i> -->
-        <span>Login</span></a>
+        <!-- <span>Login</span></a>
               </ul>
-            </div></h4>
+            </div></h4> -->
       </header>
 
       <aside>
@@ -92,7 +95,16 @@
             <ul class="sidebar-menu" id="nav-accordion">
               
               <p class="centered"><a href="#"><img src="assets/img/kuliner.png" class="img-circle" width="150" height="120"></a></p>
-              <h5 class="centered">Hi, Visitor!!</h5>
+              <h5 class="centered">Hi,
+              <?php 
+              if ($_SESSION['C'] == true) {
+                echo $_SESSION['username']; 
+              }
+              else{
+                echo "Visitor";
+              }
+              
+              ?>&nbsp!</h5>
 
               <li class="sub-menu">
                       <a class="active" href="index.php">
@@ -126,6 +138,133 @@
                       
                     </div>
                   </section>
+
+                  <section class="panel">
+
+                    <header class="panel-heading">
+                      <h2 class="box-title" style="text-transform:capitalize;"><b> Info</b></h2>
+                    </header>
+
+                    <?php 
+                     require '../connect.php';
+                      $id = $_GET["idgallery"];
+                     // echo "ini $id";
+
+                      if(strpos($id,"RM") !== false){
+                        $sqlreview = "SELECT * from information_admin where id_kuliner = '$id'";
+                      }elseif (strpos($id,"SO") !== false) {
+                        $sqlreview = "SELECT * from information_admin where id_souvenir = '$id'";
+                      }elseif (strpos($id, "IK") !== false) {
+                        $sqlreview = "SELECT * from information_admin where id_ik = '$id'";
+                      }elseif (strpos($id,"H") !== false) {
+                         $sqlreview = "SELECT * from information_admin where id_hotel = '$id'";
+                      }elseif (strpos($id,"tw")!== false) {
+                         $sqlreview = "SELECT * from information_admin where id_ow = '$id'";
+                      }
+                        
+                      $result = pg_query($sqlreview);
+                    ?>
+                    <table class="table">
+                      <thead><th>Tanggal</th><th class="centered">Info</th></thead>
+                    <?php  
+                      while ($rows = pg_fetch_array($result)) 
+                        {
+                          $tgl = $rows['tanggal'];
+                          $info = $rows['informasi'];
+                          $id_info =$rows['id_informasi'];
+                          echo "<tr><td>$tgl</td><td>$info</td><td></td></tr>";
+                        }
+                    
+
+                       ?>               
+                    
+                  </table>
+
+                    <div class="panel-body">
+                      <!-- <table id="detgal" class="table">
+                        <tbody  style='vertical-align:top;'>
+
+                        <tr><td>Name :</td><td><textarea cols="30" rows="1"></textarea></td></tr>
+                        <tr><td>Comment :</td><td><textarea cols="30" rows="5"></textarea></td></tr>
+                        <tr><td><input type="submit" value="Post Comment"/></td><td></td></tr>
+                          
+                        </tbody>          
+                      </table> -->
+
+                      
+                    </div>
+                  </section>
+
+                  <section class="panel">
+
+                    <header class="panel-heading">
+                      <h2 class="box-title" style="text-transform:capitalize;"><b> Visitor's Reviews</b></h2>
+                    </header>
+
+                    <div class="panel-body">
+
+                      <table id="detgal" class="table">
+
+                      <form method="POST" action="insert_comment.php">
+
+                          <tbody  style='vertical-align:top;'>
+                          <input type="hidden" name="id" value="<?php echo $_GET['idgallery']; ?>">
+                          <?php 
+                          if ($_SESSION['C'] == true) 
+                          {
+                            $username = $_SESSION['username'];
+                            echo "<tr><td>Comment :</td><td><textarea cols='30' rows='5' name='comment'></textarea></td></tr>
+                          <tr><td><input type='submit' value='Post Comment'/></td>
+                          <td><input name='nama' value='$username' hidden></td>
+                          </tr>";
+                          }
+                          ?>
+                          
+                          </tbody>          
+                      </table>
+                      </form>
+
+                      <?php 
+
+                      require '../connect.php';
+                      $id = $_GET['idgallery']; 
+
+                      if (strpos($id,"RM") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_kuliner = '$id'";
+                      } elseif (strpos($id,"SO") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_souvenir = '$id'";
+                      } elseif (strpos($id,"IK") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_ik = '$id'";
+                      } elseif (strpos($id,"H") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_hotel = '$id'";
+                      } elseif (strpos($id,"OW") !== false) {
+                        $sqlreview = "SELECT * FROM review where id_ow = '$id'";
+                      }
+
+
+                      $result = pg_query($sqlreview);
+                      ?>
+
+                      <table class="table"> 
+                      <?php 
+                      while ($rows = pg_fetch_array($result))
+                      {
+                        $nama = $rows ['name'];
+                        $komen = $rows['comment'];
+                        echo "<tr><td>Name</td><td>:</td><td>$nama</td></tr><tr><td>Comment</td><td>:</td><td>$komen</td></tr>";
+                      }
+
+                      
+                       ?>
+                      </table>
+                        
+
+
+
+
+                      
+                    </div>
+                  </section>
             
               </div>
 
@@ -139,9 +278,9 @@
                             <div class="html5gallery" style="max-height:700px; overflow:auto;" data-skin="horizontal" data-width="350" data-height="250" data-resizemode="fit">  
                               
                             <?php
-                            require '../connect.php';
+                            // require '../connect.php';
 
-                            $id = $_GET["idgallery"];
+                            // $id = $_GET["idgallery"];
                             if (strpos($id,"H") !== false) {  //Hotel
 
                               $querysearch  ="SELECT a.id, b.gallery_hotel FROM hotel as a left join hotel_gallery as b on a.id=b.id where a.id='$id' ";       
@@ -262,10 +401,10 @@
 
                       <header class="panel-heading" style="float:left">
                       <label style="color: black; margin-right:20px">Google Map with Location List</label>
-                  <button type="button" onclick="posisisekarang()" class="btn btn-default " data-toggle="tooltip" id="posisinow" title="Posisi Saya" style="margin-right: 7px;" ><i class="fa fa-location-arrow" > </i>
+                  <button type="button" onclick="posisisekarang()" class="btn btn-default " data-toggle="tooltip" id="posisinow" title="Posisi Saya" style="margin-right: 7px;" ><i class="fa fa-location-arrow" style="color:black;" > </i>
                       </button>
 
-                       <button type="button" onclick="lokasimanual()" class="btn btn-default"  data-toggle="tooltip" id="posmanual" title="Posisi Manual" style="margin-right: 7px;"><i class="fa fa-map-marker" ></i>
+                       <button type="button" onclick="lokasimanual()" class="btn btn-default"  data-toggle="tooltip" id="posmanual" title="Posisi Manual" style="margin-right: 7px;"><i class="fa fa-map-marker" style="color:black;"></i>
                       </button>
                                             
                        <!-- <label id="tombol">
@@ -369,8 +508,8 @@ function showDivs(n) {
     function init()
     {
       basemap();
-      viewdigitcul();
-      viewdigitkec();
+      // viewdigitcul();
+      // viewdigitkec();
     }
 
     function hapusrouteangkot() 
@@ -673,7 +812,6 @@ function showDivs(n) {
 
     //Menampilkan Detail Info Kuliner
     function detculi(id14433){  
-      
       $('#info').empty();
       $('#tampilangkotsekitarik').hide();
       $("#hasilrute").hide();
@@ -713,7 +851,7 @@ function showDivs(n) {
                 position: centerBaru,
                 // content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home'></i>Nama</td><td>:</td><td> "+namaa+"</td></tr><br><tr><td><i class='fa fa-map-marker'></i>Alamat</td><td>:</td><td> "+address+"</td></tr><br><tr><td><i class='fa fa-phone'></i>Telepon</td><td>:</td><td> "+cp+"</td></tr><br><tr><td><i class='fa fa-clock-o'></i>Open</td><td>:</td><td> "+open+"</td></tr><br><tr><td><i class='fa fa-clock-o'></i>Close</td><td>:</td><td> "+close+"</td></tr><br><tr><td><i class='fa fa-building'></i>Capacity</td><td>:</td><td> "+capacity+"</td></tr></table></span><br><input type='button' class='btn btn-success' value='Object Arround' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+namaa+"\")'<br>&nbsp&nbsp<input type='button' class='btn btn-success' value='Gallery' onclick='gallery(\""+id+"\")'<br>&nbsp&nbsp <input type='button' class='btn btn-success' value='Route' onclick='callRoute(centerLokasi,centerBaru);rutetampil()' />",   
 
-                content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home'></i>Nama</td><td>:</td><td> "+namaa+"</td></tr>",   
+                content: "<center><span style=color:black><b>Information</b><table><tr><td><i class='fa fa-home' style='color:black'></i>Nama</td><td>:</td><td> "+namaa+"</td></tr>",   
                 pixelOffset: new google.maps.Size(0, -33)
                 });
               infoposisi.push(infowindow); 
